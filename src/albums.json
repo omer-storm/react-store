@@ -1,0 +1,704 @@
+[
+    {
+        "name": "Ego Trip [Explicit]",
+        "artist": "Papa Roach",
+        "price": 12,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A1yTLUWrtPL._AC_UL604_SR604,400_.jpg",
+        "aid": 1
+    },
+    {
+        "name": "Immutable [Explicit]",
+        "artist": "Meshuggah",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81ycS0iNcbL._AC_UL604_SR604,400_.jpg",
+        "aid": 2
+    },
+    {
+        "name": "IMPERA [Explicit]",
+        "artist": "Ghost",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91nwlc-kmvL._AC_UL604_SR604,400_.jpg",
+        "aid": 3
+    },
+    {
+        "name": "Parrhesia",
+        "artist": "Animals As Leaders",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/61bcISPXZiL._AC_UL604_SR604,400_.jpg",
+        "aid": 4
+    },
+    {
+        "name": "The War to End All Wars",
+        "artist": "Sabaton",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91X6PIEN24L._AC_UL604_SR604,400_.jpg",
+        "aid": 5
+    },
+    {
+        "name": "ØF KINGDØM AND CRØWN [Explicit]",
+        "artist": "Machine Head",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91m4-BIM3AL._AC_UL604_SR604,400_.jpg",
+        "aid": 6
+    },
+    {
+        "name": "Servant Of The Mind (Deluxe)",
+        "artist": "Volbeat",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81BNJU84ciL._AC_UL604_SR604,400_.jpg",
+        "aid": 7
+    },
+    {
+        "name": "Master of Puppets (Remastered)",
+        "artist": "Metallica",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71RlRk9uwIL._AC_UL604_SR604,400_.jpg",
+        "aid": 8
+    },
+    {
+        "name": "A View From The Top Of The World",
+        "artist": "Dream Theater",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81MCs6fSioS._AC_UL604_SR604,400_.jpg",
+        "aid": 9
+    },
+    {
+        "name": "Fear Inoculum [Explicit]",
+        "artist": "TOOL",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71HrT-cjr+L._AC_UL604_SR604,400_.jpg",
+        "aid": 10
+    },
+    {
+        "name": "The Gereg (Deluxe Edition)",
+        "artist": "The HU",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71Z0H1yAOpL._AC_UL604_SR604,400_.jpg",
+        "aid": 11
+    },
+    {
+        "name": "Beautiful Shade Of Grey",
+        "artist": "James LaBrie",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91Yui3XP8mL._AC_UL604_SR604,400_.jpg",
+        "aid": 12
+    },
+    {
+        "name": "Anthems Of The Night",
+        "artist": "Cobra Spell",
+        "price": 3,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A1spUSRgB+L._AC_UL604_SR604,400_.jpg",
+        "aid": 13
+    },
+    {
+        "name": "Metallica (Remastered)",
+        "artist": "Metallica",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/51BiPFcfjIS._AC_UL604_SR604,400_.jpg",
+        "aid": 14
+    },
+    {
+        "name": "Jomsviking",
+        "artist": "Amon Amarth",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91tiALDT2+L._AC_UL604_SR604,400_.jpg",
+        "aid": 15
+    },
+    {
+        "name": "Diabolical [Explicit]",
+        "artist": "Destruction",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71zNfblfVUL._AC_UL604_SR604,400_.jpg",
+        "aid": 16
+    },
+    {
+        "name": "See What’s On The Inside [Explicit]",
+        "artist": "Asking Alexandria",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91z+e+umw6L._AC_UL604_SR604,400_.jpg",
+        "aid": 17
+    },
+    {
+        "name": "Vol. 3 The Subliminal Verses",
+        "artist": "Slipknot",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81uDA+jBSTL._AC_UL604_SR604,400_.jpg",
+        "aid": 18
+    },
+    {
+        "name": "The Sickness [Explicit]",
+        "artist": "Disturbed",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81tpw3Tx7-L._AC_UL604_SR604,400_.jpg",
+        "aid": 19
+    },
+    {
+        "name": "Iowa [Explicit]",
+        "artist": "Slipknot",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81IX2oLydDL._AC_UL604_SR604,400_.jpg",
+        "aid": 20
+    },
+    {
+        "name": "THE DEATH OF PEACE OF MIND [Explicit]",
+        "artist": "Bad Omens",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91IFWa29HvL._AC_UL604_SR604,400_.jpg",
+        "aid": 21
+    },
+    {
+        "name": "F8 [Explicit]",
+        "artist": "Five Finger Death Punch",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71G4t4GFyeL._AC_UL604_SR604,400_.jpg",
+        "aid": 22
+    },
+    {
+        "name": "Lateralus",
+        "artist": "TOOL",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/8110sHcNPGL._AC_UL604_SR604,400_.jpg",
+        "aid": 23
+    },
+    {
+        "name": "ERRA (Deluxe) [Explicit]",
+        "artist": "ERRA",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/619q213V+xL._AC_UL604_SR604,400_.jpg",
+        "aid": 24
+    },
+    {
+        "name": "Spiritual Instinct",
+        "artist": "Alcest",
+        "price": 6,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71bqYZ2t7GL._AC_UL604_SR604,400_.jpg",
+        "aid": 25
+    },
+    {
+        "name": "Deceiver of the Gods",
+        "artist": "Amon Amarth",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81FMZLwHwGL._AC_UL604_SR604,400_.jpg",
+        "aid": 26
+    },
+    {
+        "name": "Back In Black",
+        "artist": "AC/DC",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/51kOna6ez+L._AC_UL604_SR604,400_.jpg",
+        "aid": 27
+    },
+    {
+        "name": "The Way Of All Flesh",
+        "artist": "Gojira",
+        "price": 6,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81nvorHD-yL._AC_UL604_SR604,400_.jpg",
+        "aid": 28
+    },
+    {
+        "name": "For Those About to Rock (We Salute You)",
+        "artist": "AC/DC",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/61OeaMHV6jL._AC_UL604_SR604,400_.jpg",
+        "aid": 29
+    },
+    {
+        "name": "Believe [Explicit]",
+        "artist": "Disturbed",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91dkaWSX-OL._AC_UL604_SR604,400_.jpg",
+        "aid": 30
+    },
+    {
+        "name": "Berserker [Explicit]",
+        "artist": "Amon Amarth",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/8128VsA3EUL._AC_UL302_SR302,200_.jpg",
+        "aid": 31
+    },
+    {
+        "name": "Wanderers",
+        "artist": "Visions Of Atlantis",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81wVUokMeHL._AC_UL302_SR302,200_.jpg",
+        "aid": 32
+    },
+    {
+        "name": "Liberate The Unborn Inhumanity [Explicit]",
+        "artist": "Mors Principium Est",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A16HF-iDk0L._AC_UL302_SR302,200_.jpg",
+        "aid": 33
+    },
+    {
+        "name": "Melissa",
+        "artist": "Mercyful Fate",
+        "price": 7,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71us5HRI62L._AC_UL302_SR302,200_.jpg",
+        "aid": 34
+    },
+    {
+        "name": "...And Justice for All (Remastered Expanded Edition) [Explicit]",
+        "artist": "Metallica",
+        "price": 24,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71-sV+hCK4L._AC_UL302_SR302,200_.jpg",
+        "aid": 35
+    },
+    {
+        "name": "Dread Reaver",
+        "artist": "Abbath",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81dkDNylcyL._AC_UL302_SR302,200_.jpg",
+        "aid": 36
+    },
+    {
+        "name": "Twilight Of The Thunder God",
+        "artist": "Amon Amarth",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81eLh0iAg1L._AC_UL302_SR302,200_.jpg",
+        "aid": 37
+    },
+    {
+        "name": "Phobia [Explicit]",
+        "artist": "Torture Killer",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81QmG0XdTuL._AC_UL302_SR302,200_.jpg",
+        "aid": 38
+    },
+    {
+        "name": "For Maggots to Devour [Explicit]",
+        "artist": "Torture Killer",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81YQZ-0w4vL._AC_UL302_SR302,200_.jpg",
+        "aid": 39
+    },
+    {
+        "name": "Pirates",
+        "artist": "Visions Of Atlantis",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/814FT3FHRAL._AC_UL302_SR302,200_.jpg",
+        "aid": 40
+    },
+    {
+        "name": "Somewhere Far Beyond (Remastered 2007)",
+        "artist": "Blind Guardian",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81HodVnPexL._AC_UL302_SR302,200_.jpg",
+        "aid": 41
+    },
+    {
+        "name": "Unfinished",
+        "artist": "Unlucky Morpheus",
+        "price": 10,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81CKZ5woGZL._AC_UL302_SR302,200_.jpg",
+        "aid": 42
+    },
+    {
+        "name": "Prophecy of Ragnarök [Explicit]",
+        "artist": "Brothers of Metal",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81jPlXBhMNL._AC_UL302_SR302,200_.jpg",
+        "aid": 43
+    },
+    {
+        "name": "The Manticore and Other Horrors [Explicit]",
+        "artist": "Cradle Of Filth",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81jFRQEerfL._AC_UL302_SR302,200_.jpg",
+        "aid": 44
+    },
+    {
+        "name": "Voyeurist [Explicit]",
+        "artist": "Underoath",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91irEYZWNVS._AC_UL302_SR302,200_.jpg",
+        "aid": 45
+    },
+    {
+        "name": "CHANGE OF GENERATION",
+        "artist": "Unlucky Morpheus",
+        "price": 15,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81ArlMaz8HL._AC_UL302_SR302,200_.jpg",
+        "aid": 46
+    },
+    {
+        "name": "Into The Wild",
+        "artist": "Wildways",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81gDcom5pIL._AC_UL302_SR302,200_.jpg",
+        "aid": 47
+    },
+    {
+        "name": "Void",
+        "artist": "War Of Ages",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91X0AX3202L._AC_UL302_SR302,200_.jpg",
+        "aid": 48
+    },
+    {
+        "name": "Killswitch Engage",
+        "artist": "Killswitch Engage",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91bjYNuGyJL._AC_UL302_SR302,200_.jpg",
+        "aid": 49
+    },
+    {
+        "name": "Secrets in a Weird World",
+        "artist": "Rage",
+        "price": 7,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71mbhhdZ0FL._AC_UL302_SR302,200_.jpg",
+        "aid": 50
+    },
+    {
+        "name": "Atonement II B-Sides for Charity",
+        "artist": "Killswitch Engage",
+        "price": 3,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81oyHQ3+EoL._AC_UL604_SR604,400_.jpg",
+        "aid": 51
+    },
+    {
+        "name": "We Are Not Your Kind [Explicit]",
+        "artist": "Slipknot",
+        "price": 10,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81bMGIBu5mL._AC_UL604_SR604,400_.jpg",
+        "aid": 52
+    },
+    {
+        "name": "Culture of Violence [Explicit]",
+        "artist": "Extinction A.D.",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/615mfNpR8aL._AC_UL604_SR604,400_.jpg",
+        "aid": 53
+    },
+    {
+        "name": "Blood (Deluxe Edition) [Explicit]",
+        "artist": "In This Moment",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81xKrrO+Y5L._AC_UL604_SR604,400_.jpg",
+        "aid": 54
+    },
+    {
+        "name": "Chamber Music [Explicit]",
+        "artist": "Coal Chamber",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/811NsGB4icL._AC_UL604_SR604,400_.jpg",
+        "aid": 55
+    },
+    {
+        "name": "Manic",
+        "artist": "Wage War",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81EgSmdZl6L._AC_UL604_SR604,400_.jpg",
+        "aid": 56
+    },
+    {
+        "name": "Unconquered [Explicit]",
+        "artist": "Kataklysm",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81IdJZerFOL._AC_UL604_SR604,400_.jpg",
+        "aid": 57
+    },
+    {
+        "name": "Neon",
+        "artist": "ERRA",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/813n3Z77F4L._AC_UL604_SR604,400_.jpg",
+        "aid": 58
+    },
+    {
+        "name": "Eternal Blue",
+        "artist": "Spiritbox",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A1zZbgawWxS._AC_UL604_SR604,400_.jpg",
+        "aid": 59
+    },
+    {
+        "name": "Coded Number",
+        "artist": "Frank Klepacki",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/613awLBQxkL._AC_UL604_SR604,400_.jpg",
+        "aid": 60
+    },
+    {
+        "name": "The Great War",
+        "artist": "Sabaton",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81iCvmgatIL._AC_UL604_SR604,400_.jpg",
+        "aid": 61
+    },
+    {
+        "name": "Half Past Human",
+        "artist": "Cirith Ungol",
+        "price": 3,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/819wSoi7-hL._AC_UL604_SR604,400_.jpg",
+        "aid": 62
+    },
+    {
+        "name": "Rakshak [Explicit]",
+        "artist": "Bloodywood",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71hH4jaUbZL._AC_UL604_SR604,400_.jpg",
+        "aid": 63
+    },
+    {
+        "name": "Rhema",
+        "artist": "War Of Ages",
+        "price": 3,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81rb-xuHtAS._AC_UL604_SR604,400_.jpg",
+        "aid": 64
+    },
+    {
+        "name": "Danzig II: Lucifuge",
+        "artist": "Danzig",
+        "price": 6,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81DOhGJNb5L._AC_UL604_SR604,400_.jpg",
+        "aid": 65
+    },
+    {
+        "name": "If You Want Blood You've Got It (Live)",
+        "artist": "AC/DC",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71EwyAc1iCL._AC_UL604_SR604,400_.jpg",
+        "aid": 66
+    },
+    {
+        "name": "Eternal",
+        "artist": "War Of Ages",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81VauCHia7L._AC_UL604_SR604,400_.jpg",
+        "aid": 67
+    },
+    {
+        "name": "Return To Life",
+        "artist": "War Of Ages",
+        "price": 6,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81Gy74etx0L._AC_UL604_SR604,400_.jpg",
+        "aid": 68
+    },
+    {
+        "name": "Ashes Of The Wake [Explicit]",
+        "artist": "Lamb Of God",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/911W+yFRY4L._AC_UL604_SR604,400_.jpg",
+        "aid": 69
+    },
+    {
+        "name": "Stranger Fruit [Explicit]",
+        "artist": "Zeal and Ardor",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71ON2x04XKL._AC_UL604_SR604,400_.jpg",
+        "aid": 70
+    },
+    {
+        "name": "Hellbilly Deluxe 2 [Explicit]",
+        "artist": "Rob Zombie",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81t+-rRcRTL._AC_UL604_SR604,400_.jpg",
+        "aid": 71
+    },
+    {
+        "name": "Periphery II [Explicit]",
+        "artist": "Periphery",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71j2aUm+GiL._AC_UL604_SR604,400_.jpg",
+        "aid": 72
+    },
+    {
+        "name": "Eternal Endless Infinity",
+        "artist": "Visions Of Atlantis",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/815IIwKgQZL._AC_UL604_SR604,400_.jpg",
+        "aid": 73
+    },
+    {
+        "name": "Trinity",
+        "artist": "Visions Of Atlantis",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81-pPM1SGGL._AC_UL604_SR604,400_.jpg",
+        "aid": 74
+    },
+    {
+        "name": "A Christmas Carol (Extended Version)",
+        "artist": "Majestica",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91H2r2WgFVL._AC_UL604_SR604,400_.jpg",
+        "aid": 75
+    },
+    {
+        "name": "The Gathering [Explicit]",
+        "artist": "Testament",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81c+M4px5BL._AC_UL604_SR604,400_.jpg",
+        "aid": 76
+    },
+    {
+        "name": "Life Is Peachy [Explicit]",
+        "artist": "Korn",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71-oA9O2AWL._AC_UL604_SR604,400_.jpg",
+        "aid": 77
+    },
+    {
+        "name": "Pressure",
+        "artist": "Wage War",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81Euorqi3iL._AC_UL604_SR604,400_.jpg",
+        "aid": 78
+    },
+    {
+        "name": "Happier? [Explicit]",
+        "artist": "Volumes",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/613ZL2yhE6L._AC_UL604_SR604,400_.jpg",
+        "aid": 79
+    },
+    {
+        "name": "Live (Collector's Edition)",
+        "artist": "AC/DC",
+        "price": 14,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71xV5Qy-QOL._AC_UL604_SR604,400_.jpg",
+        "aid": 80
+    },
+    {
+        "name": "Saloon",
+        "artist": "The Ongoing Concept",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/8193Yez+ujL._AC_UL302_SR302,200_.jpg",
+        "aid": 81
+    },
+    {
+        "name": "White Pony",
+        "artist": "Deftones",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/51BXwSNRwIL._AC_UL302_SR302,200_.jpg",
+        "aid": 82
+    },
+    {
+        "name": "To Mega Therion",
+        "artist": "Celtic Frost",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A1sVeAoEy0L._AC_UL302_SR302,200_.jpg",
+        "aid": 83
+    },
+    {
+        "name": "The Last Stand",
+        "artist": "Sabaton",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81B2HUS2y7L._AC_UL302_SR302,200_.jpg",
+        "aid": 84
+    },
+    {
+        "name": "DAMNUM",
+        "artist": "Allegaeon",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81HD9Wfv3gL._AC_UL302_SR302,200_.jpg",
+        "aid": 85
+    },
+    {
+        "name": "Weather Systems",
+        "artist": "Anathema",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81gWW1N9PDL._AC_UL302_SR302,200_.jpg",
+        "aid": 86
+    },
+    {
+        "name": "Sweet Oblivion (feat. Geoff Tate)",
+        "artist": "Sweet Oblivion",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81syjJXj4jL._AC_UL302_SR302,200_.jpg",
+        "aid": 87
+    },
+    {
+        "name": "Blueprints",
+        "artist": "Wage War",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/91eWho14KJL._AC_UL302_SR302,200_.jpg",
+        "aid": 88
+    },
+    {
+        "name": "Carolus Rex (English Version)",
+        "artist": "Sabaton",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81lo5G3gXlL._AC_UL302_SR302,200_.jpg",
+        "aid": 89
+    },
+    {
+        "name": "Inhale, Do Not Breathe [Explicit]",
+        "artist": "Jinjer",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81R089SGmxL._AC_UL302_SR302,200_.jpg",
+        "aid": 90
+    },
+    {
+        "name": ".5: The Gray Chapter [Explicit]",
+        "artist": "Slipknot",
+        "price": 10,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81WqkJXvjQL._AC_UL302_SR302,200_.jpg",
+        "aid": 91
+    },
+    {
+        "name": "Kostolom [Explicit]",
+        "artist": "Slaughter to Prevail",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81f7jJMaWuS._AC_UL302_SR302,200_.jpg",
+        "aid": 92
+    },
+    {
+        "name": "Marrow Leech",
+        "artist": "Mire Lore",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/A1ydBo7hHAL._AC_UL302_SR302,200_.jpg",
+        "aid": 93
+    },
+    {
+        "name": "ManiaCult [Explicit]",
+        "artist": "Aborted",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81g+GlsUzBS._AC_UL302_SR302,200_.jpg",
+        "aid": 94
+    },
+    {
+        "name": "Blood Magick Necromance [Explicit]",
+        "artist": "Belphegor",
+        "price": 10,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/71JFG98g-HL._AC_UL302_SR302,200_.jpg",
+        "aid": 95
+    },
+    {
+        "name": "All Hope Is Gone [Explicit]",
+        "artist": "Slipknot",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/914Z9IVF6CL._AC_UL302_SR302,200_.jpg",
+        "aid": 96
+    },
+    {
+        "name": "I, The Mask",
+        "artist": "In Flames",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/713gFUJrPSL._AC_UL302_SR302,200_.jpg",
+        "aid": 97
+    },
+    {
+        "name": "Goatreich-Fleshcult [Explicit]",
+        "artist": "Belphegor",
+        "price": 8,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81R4F7kL2lL._AC_UL302_SR302,200_.jpg",
+        "aid": 98
+    },
+    {
+        "name": "Plays Metallica by Four Cellos (Remastered)",
+        "artist": "Apocalyptica",
+        "price": 9,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81Zm0IeQurL._AC_UL302_SR302,200_.jpg",
+        "aid": 99
+    },
+    {
+        "name": "Hallelujah",
+        "artist": "Igorrr",
+        "price": 11,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/814as4vLgHL._AC_UL302_SR302,200_.jpg",
+        "aid": 100
+    }
+
+]
+
