@@ -1,49 +1,69 @@
 import '../App.css';
 import albums from '../albums.json'
-import { Component } from 'react';
+import { Component } from 'react'
+import Products from './products'
+import Cart from './cart'
 
 
 class App extends Component{
  
  state = {
-   albums 
+   albums,
+   cart: [] 
  }
 
-handleAddToCart = (album) => {
-  album.status = true;
-  this.setState({albums: this.state.albums.splice(album) });
+handleAddToCart = (album) => { 
+  const cart = this.state.cart
+  cart.push(album)
+  this.setState({albums: this.state.albums.splice(album), cart: cart});
 }
 
 render(){
  
   return (
+  <div className='row'>
     <div className='App col-8'>
-      <div className="row">
-        {this.state.albums.map(album =>
-      <div className = "col-4" key={album.aid}>
-        <div className = "card" >
-            <img 
-            className="card-img-top" 
-            src= {album.image}  
-            alt="Card cap"> 
-            </img>
-            <div className="card-body">
-              {album.status && <p className="alert alert-success"> Added to cart</p> }
-              <h5 className="card-title"> {album.name} {this.state.status}</h5>
-              <p className="card-text"> {album.artist}</p>
-              <p onClick={ () => this.handleAddToCart(album)} className="btn btn-primary btn-sm"> Add to cart </p>
-            </div>
-          </div>
-      </div>
-      )}
-      </div>
+    
+    <div className='row'>
+    {this.state.albums.map(album =>
+      <Products 
+      key={album.aid}
+      album = {album}
+      onAddToCart = {this.handleAddToCart}
+      />
+
+      
+
+    )}
+    </div>
   </div>
 
+
+
+    <div className='col-4'>
+    <table className='table table-bordered'>
+            <thead>
+              <tr>
+                <th scope='col'>Product</th>
+                <th scope='col'>Quantity</th>
+              </tr>
+              </thead>
+                <tbody>
+      {this.state.cart.length != 0 && this.state.cart.map(cart => <Cart
+      key={cart.aid}
+      album = {cart}
+      />)}
+      </tbody>
+            </table>
+    </div>
+   
+     </div>
       
   )
 }
 
 }
+
 
 
 export default App;
