@@ -66,7 +66,7 @@ render(){
   </div>
 
 
-  {this.state.cart.length !== 0 &&
+  
     <div className='col-4'>
     <table className='table table-bordered'>
             <thead>
@@ -76,7 +76,7 @@ render(){
               </tr>
               </thead>
                 <tbody>
-      {this.state.cart.map(cart => <Cart
+      { this.state.cart.length !== 0 &&this.state.cart.map(cart => <Cart
       key={cart.aid}
       album = {cart}
       onIncrement = {this.handleAddToCart}
@@ -85,7 +85,7 @@ render(){
       </tbody>
             </table>
     </div>
-   }
+   
    
      </div>
 </div>      
