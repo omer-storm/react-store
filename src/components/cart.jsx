@@ -27,9 +27,9 @@ class Cart extends Component {
                   > 
                    </img></td>
                 <td><br/>
-                <button onClick={() => this.props.onIncrement(this.props.album,"dec")} className='btn btn-sm btn-success m-2'>-</button> 
+                <button onClick={() => this.props.onDecrement(this.props.album)} className='btn btn-sm btn-success m-2'>-</button> 
                 {this.props.album.qty}
-                <button onClick={() => this.props.onIncrement(this.props.album,"inc")} className='btn btn-sm btn-success m-2'>+</button>
+                <button onClick={() => this.props.onIncrement(this.props.album)} className='btn btn-sm btn-success m-2'>+</button>
                 </td>
                 </tr>
                

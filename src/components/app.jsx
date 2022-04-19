@@ -29,18 +29,17 @@ handleAddToCart = (album) => {
   }
 }
 
-handleIncrement = (album,type) => {
+handleDecrement = (album) => {
   
-  const cart = this.state.cart
-  const previous = this.state.cart.find((a) => album.aid === a.aid)
-  const index = cart.indexOf(previous);
-  if(type === "dec" && album.qty > 1){
+  
+  if(album.qty > 1){
+    const cart = this.state.cart
+    const previous = this.state.cart.find((a) => album.aid === a.aid)
+    const index = cart.indexOf(previous);
     --previous.qty
-  }   else if(type === "inc"){
-    ++previous.qty
-  }
-  cart[index] = previous 
-  this.setState({cart});
+    cart[index] = previous 
+    this.setState({cart});
+  }   
 
 }
 
@@ -67,7 +66,7 @@ render(){
   </div>
 
 
-
+  {this.state.cart.length !== 0 &&
     <div className='col-4'>
     <table className='table table-bordered'>
             <thead>
@@ -77,14 +76,16 @@ render(){
               </tr>
               </thead>
                 <tbody>
-      {this.state.cart.length !== 0 && this.state.cart.map(cart => <Cart
+      {this.state.cart.map(cart => <Cart
       key={cart.aid}
       album = {cart}
-      onIncrement = {this.handleIncrement}
+      onIncrement = {this.handleAddToCart}
+      onDecrement = {this.handleDecrement}
       />)}
       </tbody>
             </table>
     </div>
+   }
    
      </div>
 </div>      
