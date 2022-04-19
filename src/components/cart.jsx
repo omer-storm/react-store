@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import albums from '../albums.json'
 
 class Cart extends Component {
     
+  state = {
+    
+  }
+
+  saveInfo(){
+    const obj = this.state.info 
+    // obj.push({aid: this.props.album.aid, qty: 1})
+    console.log(obj)
+    // this.setState({info: obj})
+    // console.log(this.state.info)
+  }
       
     render() { 
+              // this.saveInfo()
         return (
             
               <tr>
                 <td> <img  
                   src= {this.props.album.image}
                   alt="Card cap"
-                  height={100}
+                  height={135}
                   width={200}
                   > 
                    </img></td>
-                <td>2</td>
+                <td><br/>
+                <button onClick={() => this.props.onIncrement(this.props.album,"dec")} className='btn btn-sm btn-success m-2'>-</button> 
+                {this.props.album.qty}
+                <button onClick={() => this.props.onIncrement(this.props.album,"inc")} className='btn btn-sm btn-success m-2'>+</button>
+                </td>
                 </tr>
                
                
