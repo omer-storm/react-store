@@ -13,9 +13,10 @@ class App extends Component{
    cart: []
  }
 
-handleAddToCart = (album) => { 
-  const cart = this.state.cart
+handleAddToCart = (album) => {
+  const cart = [...this.state.cart]
   const previous = this.state.cart.find((a) => album.aid === a.aid)
+  
   if(!previous){
   album.qty = 1  
   cart.push(album)
@@ -31,7 +32,6 @@ handleAddToCart = (album) => {
 
 handleDecrement = (album) => {
   
-  
   if(album.qty > 1){
     const cart = this.state.cart
     const previous = this.state.cart.find((a) => album.aid === a.aid)
@@ -41,6 +41,12 @@ handleDecrement = (album) => {
     this.setState({cart});
   }   
 
+}
+
+handleRemove = (album) => {
+  const cart = this.state.cart;
+  cart.splice(cart.indexOf(album),1)
+  this.setState({cart})
 }
 
 render(){
@@ -73,14 +79,16 @@ render(){
               <tr>
                 <th scope='col'>Product</th>
                 <th scope='col'>Quantity</th>
+                <th scope='col'></th>
               </tr>
               </thead>
                 <tbody>
-      { this.state.cart.length !== 0 &&this.state.cart.map(cart => <Cart
+      { this.state.cart.length !== 0 && this.state.cart.map(cart => <Cart
       key={cart.aid}
       album = {cart}
       onIncrement = {this.handleAddToCart}
       onDecrement = {this.handleDecrement}
+      onRemove = {this.handleRemove}
       />)}
       </tbody>
             </table>
