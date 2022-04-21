@@ -11,11 +11,11 @@ const Cart = ({album, onIncrement, onDecrement, onRemove}) => {
       > 
        </img></td>
     <td><br/>
-    <button onClick={() => onDecrement(album)} className='btn btn-sm btn-success m-2'>-</button> 
+    <button onClick={() => onDecrement(album)} className='btn btn-sm btn-success m-2 '>-</button> 
     {album.qty}
-    <button onClick={() => onIncrement(album)} className='btn btn-sm btn-success m-2'>+</button>
+    <button onClick={() => onIncrement(album)} className='btn btn-sm btn-success m-2 '>+</button>
     </td>
-    <td><br/><button onClick={()=>onRemove(album)} className="btn btn-danger">Delete</button></td>
+    <td><br/><button onClick={()=>onRemove(album)} className="btn btn-sm btn-danger">Remove</button></td>
     </tr>
    
    );
