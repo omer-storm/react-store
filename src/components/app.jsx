@@ -1,28 +1,34 @@
 import '../App.css';
-import albums from '../albums.json'
+import items from '../items.json'
 import { Component } from 'react'
-import Products from './products'
+import Items from './items'
 import Cart from './cart'
 import Navbar from './navbar';
 import Pagination from './common/pagination';
 import  paginate  from '../utils/paginate';
+import ListGroup from './common/listGroup';
+
 
 class App extends Component{
  
  state = {
-   albums,
+   items,
    cart: [],
-   itemsPerPage: 6,
-   currentPage: 1
+   itemsPerPage: 9,
+   currentPage: 1,
+   previousPages:[1],
+   previousPageTop: 1,
+   categories: ["books", "music"]
+
  }
 
-handleAddToCart = (album) => {
+handleAddToCart = (item) => {
   const cart = [...this.state.cart]
-  const previous = this.state.cart.find((a) => album.aid === a.aid)
+  const previous = this.state.cart.find((i) => item.iid === i.iid)
   
   if(!previous){
-  album.qty = 1  
-  cart.push(album)
+  item.qty = 1  
+  cart.push(item)
   this.setState({cart});
   }
   else{
@@ -33,11 +39,11 @@ handleAddToCart = (album) => {
   }
 }
 
-handleDecrement = (album) => {
+handleDecrement = (item) => {
   
-  if(album.qty > 1){
+  if(item.qty > 1){
     const cart = this.state.cart
-    const previous = this.state.cart.find((a) => album.aid === a.aid)
+    const previous = this.state.cart.find((i) => item.iid === i.iid)
     const index = cart.indexOf(previous);
     --previous.qty
     cart[index] = previous 
@@ -46,51 +52,83 @@ handleDecrement = (album) => {
 
 }
 
-handleRemove = (album) => {
+handleRemove = (item) => {
   const cart = this.state.cart;
-  cart.splice(cart.indexOf(album),1)
+  cart.splice(cart.indexOf(item),1)
   this.setState({cart})
 }
 
-handleLike = (album) => {
-  console.log(album)
+handleLike = (item) => {
+  console.log(item)
 }
 
 handlePageChange = (page) =>{
+   
   this.setState({currentPage: page})
 }
 
+handleNextPageChange = (page) =>{
+  let {previousPages, previousPageTop} = this.state
+
+  if(previousPageTop !== 6){
+    previousPages[previousPageTop] = page
+    previousPageTop++
+  }else{
+      previousPages[previousPageTop] = page
+  }
+  // console.log(previousPages)
+ this.setState({currentPage: page, previousPages, previousPageTop})
+}
+
+handleFilter = (filter) => {
+ console.log(filter)
+}
+
 render(){
-   const page_albums = paginate(this.state.albums,this.state.currentPage,this.state.itemsPerPage)
+   const page_items = paginate(this.state.items,this.state.currentPage,this.state.itemsPerPage)
   return (
 
  <div className='container'>
 
-       <Navbar />
+       <Navbar
+      
+       />
 
   <div className='row'>
+
+
     <div className='App col-8'>
+    <div className='row'>
+      <div className="col-4">
+        <ListGroup
+         onFilter = {this.handleFilter}
+        />
+      </div>
+    </div>
     
     <div className='row'>
-    <Pagination 
-    itemsCount={this.state.albums.length} 
-    itemsPerPage={this.state.itemsPerPage}
-    onPageChange={this.handlePageChange}
-    currentPage= {this.state.currentPage}
-
-    />
+ 
     
-    {page_albums.map(album =>
-      <Products 
-      key={album.aid}
-      album = {album}
+    {page_items.map(item =>
+      <Items 
+      key={item.iid}
+      item = {item}
       onLike={this.handleLike}
       // likeStatus={false}
       onAddToCart = {this.handleAddToCart}
       />
     )}
     </div>
-   
+    <br/>
+    <Pagination 
+    itemsCount={this.state.items.length} 
+    itemsPerPage={this.state.itemsPerPage}
+    onPageChange={this.handlePageChange}
+    currentPage= {this.state.currentPage}
+    previousPages= {this.state.previousPages}
+    previousPageTop = {this.state.previousPageTop}
+    onNextPageChange = {this.handleNextPageChange}
+    />
   </div>
 
     <div className='col-4'>
@@ -105,8 +143,8 @@ render(){
               </thead>
                 <tbody>
       { this.state.cart.length !== 0 && this.state.cart.map(cart => <Cart
-      key={cart.aid}
-      album = {cart}
+      key={cart.iid}
+      item = {cart}
       onIncrement = {this.handleAddToCart}
       onDecrement = {this.handleDecrement}
       onRemove = {this.handleRemove}
