@@ -12,13 +12,14 @@ import ListGroup from './common/listGroup';
 class App extends Component{
  
  state = {
-   items,
+   items: items.filter((item) =>{ return item.category === "books" }),
    cart: [],
    itemsPerPage: 9,
    currentPage: 1,
-   previousPages:[1],
+   previousPages:[],
    previousPageTop: 1,
-   categories: ["books", "music"]
+   categories: ["books", "music"],
+   selected_category: "books"
 
  }
 
@@ -70,22 +71,23 @@ handlePageChange = (page) =>{
 handleNextPageChange = (page) =>{
   let {previousPages, previousPageTop} = this.state
 
-  if(previousPageTop !== 6){
-    previousPages[previousPageTop] = page
+  if(previousPageTop !== 7){
+    previousPages[previousPageTop] = page-1
     previousPageTop++
   }else{
-      previousPages[previousPageTop] = page
+      previousPages[previousPageTop] = page-1
   }
   // console.log(previousPages)
  this.setState({currentPage: page, previousPages, previousPageTop})
 }
 
 handleFilter = (filter) => {
- console.log(filter)
+ this.setState({items: items.filter((item) =>{ return item.category === filter }), selected_category: filter, currentPage: 1})
 }
 
 render(){
    const page_items = paginate(this.state.items,this.state.currentPage,this.state.itemsPerPage)
+   const {categories, selected_category} = this.state
   return (
 
  <div className='container'>
@@ -99,13 +101,16 @@ render(){
 
     <div className='App col-8'>
     <div className='row'>
+
       <div className="col-4">
         <ListGroup
          onFilter = {this.handleFilter}
+         categories= {categories}
+         selected_category = {selected_category}
         />
       </div>
     </div>
-    
+     <br/>
     <div className='row'>
  
     
@@ -132,12 +137,12 @@ render(){
   </div>
 
     <div className='col-4'>
-      
     <table className='table table-bordered'>
             <thead>
               <tr>
                 <th scope='col'>Product</th>
                 <th scope='col'>Quantity</th>
+                <th scope='col'>Price</th>
                 <th scope='col'></th>
               </tr>
               </thead>

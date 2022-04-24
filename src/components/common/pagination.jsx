@@ -14,10 +14,11 @@ const Pagination = ({itemsCount,itemsPerPage,onPageChange, currentPage, previous
        </li>}
 
     {previousPages.map((page) => 
-    <li className={(currentPage === page)? "page-item active": "page-item"}>
+    <li className={(page !== currentPage)? "page-item": "page-item active"}>
       <button onClick={() => onPageChange(page)} className="page-link" >{page}</button></li>
     )}     
-          
+    <li className="page-item active">
+      <button onClick={() => onPageChange(currentPage)} className="page-link" >{currentPage}</button></li>      
     {/* <li className="page-item active"><button onClick= {() => onPageChange(currentPage)}  className="page-link" >{currentPage}</button></li>          */}
               { currentPage < totalPages &&
             <li><button onClick= { () => onNextPageChange(currentPage+1)}  className="page-link" >next</button></li>}

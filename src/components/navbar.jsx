@@ -3,7 +3,7 @@
 const Navbar = () => {
     return ( 
     <div className="jumbotron">
-    <h1 className="display-4">Record Store</h1>
+    <h1 className="display-4">Books And Music</h1>
     <hr className="my-4"/>
      </div> 
      );

@@ -1,10 +1,14 @@
-const ListGroup = ({onFilter}) => {
+const ListGroup = ({categories,selected_category,onFilter}) => {
     return ( 
         <div className="list-group">
-  <button onClick={()=> onFilter("books")  } className="list-group-item list-group-item-action active">
-    Books
+  {categories.map( (category) =>
+  <button 
+  
+  onClick={()=> onFilter(category)  } 
+  className= {(category === selected_category) ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action "}>
+    {category}
   </button>
-  <button onClick={()=> onFilter("music")  } className="list-group-item list-group-item-action">Music</button>
+  )}
 </div>
      );
 }

@@ -8,7 +8,10 @@ const Items = ({item, onAddToCart,onLike}) => {
         <img 
         className="card-img-top" 
         src= {item.image}  
-        alt="Card cap"> 
+        alt="Card cap"
+        height={200}
+        width={200}
+        > 
         </img>
         <div className="card-body">
           {/* {item.status && <p className="alert alert-success"> Added to cart</p> } */}
