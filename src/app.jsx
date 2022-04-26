@@ -1,12 +1,12 @@
-import '../App.css';
-import items from '../items.json'
+import './App.css';
+import items from './items.json'
 import { Component } from 'react'
-import Items from './items'
-import Cart from './cart'
-import Navbar from './navbar';
-import Pagination from './common/pagination';
-import  paginate  from '../utils/paginate';
-import ListGroup from './common/listGroup';
+import Items from './components/items'
+import Cart from './components/cart'
+import Navbar from './components/navbar';
+import Pagination from './components/common/pagination';
+import  paginate  from './utils/paginate';
+import ListGroup from './components/common/listGroup';
 
 
 class App extends Component{
@@ -16,7 +16,7 @@ class App extends Component{
    cart: [],
    itemsPerPage: 9,
    currentPage: 1,
-   previousPages:[],
+   previousPages:[1],
    previousPageTop: 1,
    categories: ["books", "music"],
    selected_category: "books"
@@ -59,10 +59,6 @@ handleRemove = (item) => {
   this.setState({cart})
 }
 
-handleLike = (item) => {
-  console.log(item)
-}
-
 handlePageChange = (page) =>{
    
   this.setState({currentPage: page})
@@ -70,19 +66,22 @@ handlePageChange = (page) =>{
 
 handleNextPageChange = (page) =>{
   let {previousPages, previousPageTop} = this.state
-
+  
   if(previousPageTop !== 7){
-    previousPages[previousPageTop] = page-1
+    
+    previousPages[previousPageTop] = page
     previousPageTop++
-  }else{
-      previousPages[previousPageTop] = page-1
+      
+  }
+   else{
+      previousPages[previousPageTop] = page
   }
   // console.log(previousPages)
  this.setState({currentPage: page, previousPages, previousPageTop})
 }
 
 handleFilter = (filter) => {
- this.setState({items: items.filter((item) =>{ return item.category === filter }), selected_category: filter, currentPage: 1})
+ this.setState({items: items.filter((item) =>{ return item.category === filter }), selected_category: filter, currentPage: 1, previousPages: [1], previousPageTop: 1})
 }
 
 render(){
@@ -92,9 +91,7 @@ render(){
 
  <div className='container'>
 
-       <Navbar
-      
-       />
+       <Navbar />
 
   <div className='row'>
 
@@ -110,10 +107,10 @@ render(){
         />
       </div>
     </div>
+
      <br/>
-    <div className='row'>
- 
-    
+
+    <div className='row'>  
     {page_items.map(item =>
       <Items 
       key={item.iid}
@@ -124,7 +121,9 @@ render(){
       />
     )}
     </div>
+
     <br/>
+    
     <Pagination 
     itemsCount={this.state.items.length} 
     itemsPerPage={this.state.itemsPerPage}
@@ -147,13 +146,15 @@ render(){
               </tr>
               </thead>
                 <tbody>
-      { this.state.cart.length !== 0 && this.state.cart.map(cart => <Cart
+      { this.state.cart.length !== 0 && this.state.cart.map(cart => 
+      <Cart
       key={cart.iid}
       item = {cart}
       onIncrement = {this.handleAddToCart}
       onDecrement = {this.handleDecrement}
       onRemove = {this.handleRemove}
-      />)}
+      />
+      )}
       </tbody>
             </table>
     </div>
