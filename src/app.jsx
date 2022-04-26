@@ -17,7 +17,8 @@ class App extends Component{
    itemsPerPage: 9,
    currentPage: 1,
    previousPages:[1],
-   previousPageTop: 1,
+   previousPageTop: 0,
+   paginationRowLength: 3,
    categories: ["books", "music"],
    selected_category: "books"
 
@@ -64,16 +65,26 @@ handlePageChange = (page) =>{
   this.setState({currentPage: page})
 }
 
-handleNextPageChange = (page) =>{
-  let {previousPages, previousPageTop} = this.state
-  
-  if(previousPageTop !== 7){
-    
+handlePreviousPageChange = (page) => {
+  let {previousPages, previousPageTop, paginationRowLength} = this.state
+  if(page > paginationRowLength){
+    previousPages[previousPageTop-1] = page-1
     previousPages[previousPageTop] = page
+    this.setState({currentPage: page, previousPages})
+
+  }
+}
+
+handleNextPageChange = (page) =>{
+  let {previousPages, previousPageTop, paginationRowLength} = this.state
+  
+  if(previousPageTop <= paginationRowLength){
+    
     previousPageTop++
-      
+    previousPages[previousPageTop] = page
   }
    else{
+    previousPages[previousPageTop-1] = page-1
       previousPages[previousPageTop] = page
   }
   // console.log(previousPages)
@@ -127,11 +138,13 @@ render(){
     <Pagination 
     itemsCount={this.state.items.length} 
     itemsPerPage={this.state.itemsPerPage}
-    onPageChange={this.handlePageChange}
     currentPage= {this.state.currentPage}
     previousPages= {this.state.previousPages}
-    previousPageTop = {this.state.previousPageTop}
+    rowLength = {this.state.paginationRowLength}
+    previousPageTop={this.state.previousPageTop}
+    onPageChange={this.handlePageChange}
     onNextPageChange = {this.handleNextPageChange}
+    onPreviousPageChange = {this.handlePreviousPageChange}
     />
   </div>
 
