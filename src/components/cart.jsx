@@ -11,7 +11,7 @@ const Cart = ({item, onIncrement, onDecrement, onRemove}) => {
       > 
        </img></td>
     <td><br/>
-    <div class="text-center">
+    <div className="text-center">
     <button onClick={() => onDecrement(item)} className='btn btn-sm btn-success m-1'>-</button> 
     <h6 className="text-center">{item.qty}</h6>
     <button onClick={() => onIncrement(item)} className='btn btn-sm btn-success'>+</button>

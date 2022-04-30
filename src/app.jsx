@@ -1,12 +1,13 @@
 import './App.css';
 import items from './items.json'
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Items from './components/items'
 import Cart from './components/cart'
 import Navbar from './components/navbar';
 import Pagination from './components/common/pagination';
-import  paginate  from './utils/paginate';
+import paginate  from './utils/paginate';
 import ListGroup from './components/common/listGroup';
+import Purchase from './components/purchase';
 
 
 class App extends Component{
@@ -18,7 +19,7 @@ class App extends Component{
    currentPage: 1,
    previousPages:[1],
    previousPageTop: 0,
-   paginationRowLength: 3,
+   paginationRowLength: 8,
    categories: ["books", "music"],
    selected_category: "books"
 
@@ -92,7 +93,13 @@ handleNextPageChange = (page) =>{
 }
 
 handleFilter = (filter) => {
- this.setState({items: items.filter((item) =>{ return item.category === filter }), selected_category: filter, currentPage: 1, previousPages: [1], previousPageTop: 1})
+ this.setState({
+   items: items.filter((item) =>{ return item.category === filter }), 
+   selected_category: filter, 
+   currentPage: 1, 
+   previousPages: [1], 
+   previousPageTop: 0
+  })
 }
 
 render(){
@@ -167,9 +174,21 @@ render(){
       onDecrement = {this.handleDecrement}
       onRemove = {this.handleRemove}
       />
-      )}
+      )  
+
+
+      }
+            
+
       </tbody>
-            </table>
+      </table>
+
+      { this.state.cart.length !== 0 &&
+
+      <Purchase/>
+      
+      }
+
     </div>
     
    

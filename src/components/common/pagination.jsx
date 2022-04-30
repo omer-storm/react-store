@@ -2,8 +2,8 @@
 import React from "react";
 
 
-const Pagination = ({itemsCount,itemsPerPage,onPageChange, currentPage, previousPages, rowLength, previousPageTop, onNextPageChange, onPreviousPageChange}) => {
-    console.log(previousPageTop)
+const Pagination = ({itemsCount,itemsPerPage,onPageChange, currentPage, previousPages, rowLength, 
+  previousPageTop, onNextPageChange, onPreviousPageChange}) => {
     const totalPages = Math.ceil(itemsCount/itemsPerPage)
     if(totalPages === 1) return null
     // const pages = _.range(1,totalPages+1)

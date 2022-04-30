@@ -21,6 +21,7 @@ const Items = ({item, onAddToCart,onLike}) => {
            item={item}
           /> */}
           <h5 className="card-title" > {item.item} </h5>
+          <h6 className="card-text m-2" >Price: ${item.price} || Quantity: {item.quantity}</h6>           
           <p className="card-text"> {item.author}</p>
           <p onClick={ () => onAddToCart(item)} className="btn btn-primary btn-sm"> Add to cart </p>
           
