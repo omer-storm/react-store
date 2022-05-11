@@ -1,5 +1,4 @@
 import './App.css';
-import items from './items.json'
 import React, { Component } from 'react'
 import Items from './components/items'
 import Cart from './components/cart'
@@ -8,24 +7,37 @@ import Pagination from './components/common/pagination';
 import paginate  from './utils/paginate';
 import ListGroup from './components/common/listGroup';
 import Purchase from './components/purchase';
-
-
+import axios from 'axios'
 class App extends Component{
+
+
+
+    state = {
+      items: [],
+      cart: [],
+      itemsPerPage: 9,
+      currentPage: 1,
+      previousPages:[1],
+      previousPageTop: 0,
+      paginationRowLength: 8,
+      categories: ["books", "music"],
+      selected_category: "books"
+   
+    }
+
+    getItems = async (filter) => {
+      const items = await axios.get( "/api/items")
+      this.setState({items: items.data.filter((item) =>{ return item.category === filter })})
+    }
+    
  
- state = {
-   items: items.filter((item) =>{ return item.category === "books" }),
-   cart: [],
-   itemsPerPage: 9,
-   currentPage: 1,
-   previousPages:[1],
-   previousPageTop: 0,
-   paginationRowLength: 8,
-   categories: ["books", "music"],
-   selected_category: "books"
+   async componentDidMount(){
+         this.getItems("books")
+   }
+  
 
- }
-
-handleAddToCart = (item) => {
+ 
+ handleAddToCart = (item) => {
   const cart = [...this.state.cart]
   const previous = this.state.cart.find((i) => item.iid === i.iid)
   
@@ -93,8 +105,8 @@ handleNextPageChange = (page) =>{
 }
 
 handleFilter = (filter) => {
- this.setState({
-   items: items.filter((item) =>{ return item.category === filter }), 
+  this.getItems(filter)
+  this.setState({
    selected_category: filter, 
    currentPage: 1, 
    previousPages: [1], 
@@ -198,7 +210,4 @@ render(){
 }
 
 }
-
-
-
 export default App;
