@@ -8,4 +8,10 @@ router.get('/', async function(req, res) {
 
   });
 
+  router.get('/:id', async function(req, res) {
+    const item = await db.Item.find({"iid": req.params.id});
+    res.status(200).json(item[0]);
+
+  });
+
 module.exports = router

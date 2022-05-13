@@ -10,118 +10,76 @@ import Purchase from './components/purchase';
 import axios from 'axios'
 class App extends Component{
 
-
-
-    state = {
-      items: [],
-      cart: [],
-      itemsPerPage: 9,
-      currentPage: 1,
-      previousPages:[1],
-      previousPageTop: 0,
-      paginationRowLength: 8,
-      categories: ["books", "music"],
-      selected_category: "books"
+  state = {
+    items: [],
+    cart_id: null,
+    filter: {},
+    itemsPerPage: 9,
+    currentPage: 1,
+    paginationRowLength: 3,
+    resetPages: false,
+    categories: ["books", "music"],
+    selected_category: "books"
    
-    }
+  }
 
-    getItems = async (filter) => {
-      const items = await axios.get( "/api/items")
-      this.setState({items: items.data.filter((item) =>{ return item.category === filter })})
-    }
+  getItems = async (filter) => {
+    const items = await axios.get( "/api/items")
+     this.setState({items: items.data, filter: items.data.filter((item) =>{ return item.category === filter })})
+  }
     
  
-   async componentDidMount(){
-         this.getItems("books")
-   }
-  
+  async componentDidMount(){
+    this.getItems("books")
+  }
 
- 
+   handlePageChange = (page) =>{
+   
+    this.setState({currentPage: page})
+  }
+
+  handlePageResume = () =>{
+    this.setState({resetPages: false})
+  }
+   
+  
  handleAddToCart = (item) => {
-  const cart = [...this.state.cart]
-  const previous = this.state.cart.find((i) => item.iid === i.iid)
+   this.setState({cart_id: {id: item.iid, qty: item.quantity}})
+ }
+
+ updateQty = (id) => {
+  let  update_item = this.state.items.find(i => i.iid === id )
+  const index = this.state.items.indexOf(update_item)
+  update_item = this.state.items
+  --update_item[index].quantity  
+  this.setState({items: update_item})
   
-  if(!previous){
-  item.qty = 1  
-  cart.push(item)
-  this.setState({cart});
-  }
-  else{
-    const index = cart.indexOf(previous);
-    ++previous.qty
-    cart[index] = previous
-    this.setState({cart});
-  }
 }
+     
 
-handleDecrement = (item) => {
-  
-  if(item.qty > 1){
-    const cart = this.state.cart
-    const previous = this.state.cart.find((i) => item.iid === i.iid)
-    const index = cart.indexOf(previous);
-    --previous.qty
-    cart[index] = previous 
-    this.setState({cart});
-  }   
 
-}
 
-handleRemove = (item) => {
-  const cart = this.state.cart;
-  cart.splice(cart.indexOf(item),1)
-  this.setState({cart})
-}
-
-handlePageChange = (page) =>{
-   
-  this.setState({currentPage: page})
-}
-
-handlePreviousPageChange = (page) => {
-  let {previousPages, previousPageTop, paginationRowLength} = this.state
-  if(page > paginationRowLength){
-    previousPages[previousPageTop-1] = page-1
-    previousPages[previousPageTop] = page
-    this.setState({currentPage: page, previousPages})
-
-  }
-}
-
-handleNextPageChange = (page) =>{
-  let {previousPages, previousPageTop, paginationRowLength} = this.state
-  
-  if(previousPageTop <= paginationRowLength){
-    
-    previousPageTop++
-    previousPages[previousPageTop] = page
-  }
-   else{
-    previousPages[previousPageTop-1] = page-1
-      previousPages[previousPageTop] = page
-  }
-  // console.log(previousPages)
- this.setState({currentPage: page, previousPages, previousPageTop})
-}
 
 handleFilter = (filter) => {
-  this.getItems(filter)
+  const items = this.state.items
   this.setState({
-   selected_category: filter, 
-   currentPage: 1, 
-   previousPages: [1], 
-   previousPageTop: 0
+   filter:  items.filter((item) =>{ return item.category === filter }),
+   selected_category: filter,
+   resetPages: true,
+   currentPage: 1
   })
 }
 
+
 render(){
-   const page_items = paginate(this.state.items,this.state.currentPage,this.state.itemsPerPage)
+   const page_items = paginate(this.state.filter,this.state.currentPage,this.state.itemsPerPage)
    const {categories, selected_category} = this.state
   return (
 
  <div className='container'>
 
        <Navbar />
+  
 
   <div className='row'>
 
@@ -155,51 +113,21 @@ render(){
     <br/>
     
     <Pagination 
-    itemsCount={this.state.items.length} 
+    itemsCount={this.state.filter.length} 
     itemsPerPage={this.state.itemsPerPage}
     currentPage= {this.state.currentPage}
-    previousPages= {this.state.previousPages}
-    rowLength = {this.state.paginationRowLength}
-    previousPageTop={this.state.previousPageTop}
-    onPageChange={this.handlePageChange}
-    onNextPageChange = {this.handleNextPageChange}
-    onPreviousPageChange = {this.handlePreviousPageChange}
+    paginationRowLength = {this.state.paginationRowLength}
+    resetPages = {this.state.resetPages}
+    onPageResume = {this.handlePageResume}
+    onPageChange= {this.handlePageChange}
     />
   </div>
 
     <div className='col-4'>
-    <table className='table table-bordered'>
-            <thead>
-              <tr>
-                <th scope='col'>Product</th>
-                <th scope='col'>Quantity</th>
-                <th scope='col'>Price</th>
-                <th scope='col'></th>
-              </tr>
-              </thead>
-                <tbody>
-      { this.state.cart.length !== 0 && this.state.cart.map(cart => 
-      <Cart
-      key={cart.iid}
-      item = {cart}
-      onIncrement = {this.handleAddToCart}
-      onDecrement = {this.handleDecrement}
-      onRemove = {this.handleRemove}
-      />
-      )  
 
-
-      }
-            
-
-      </tbody>
-      </table>
-
-      { this.state.cart.length !== 0 &&
-
-      <Purchase/>
+      {this.state.cart_id !== null && <Cart item = {this.state.cart_id} onUpdateQty = {this.updateQty}/>}
       
-      }
+      { this.state.cart_id !== null && <Purchase/>}
 
     </div>
     
