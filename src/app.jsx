@@ -14,6 +14,7 @@ class App extends Component{
     items: [],
     cart_id: null,
     filter: {},
+    likedItems: [],
     itemsPerPage: 9,
     currentPage: 1,
     paginationRowLength: 3,
@@ -25,12 +26,23 @@ class App extends Component{
 
   getItems = async (filter) => {
     const items = await axios.get( "/api/items")
+    // if(item.data.like[0])
+    // console.log(items.data)
      this.setState({items: items.data, filter: items.data.filter((item) =>{ return item.category === filter })})
+  }
+
+  getLikedItems = async () => {
+    const likedItems = await axios.get("/api/likes")
+    // likedItems.data.map(item => console.log(item.item[0]))
+    console.log(likedItems)
+    this.setState({ likedItems: likedItems.data})
+    
   }
     
  
-  async componentDidMount(){
+  componentDidMount(){
     this.getItems("books")
+    this.getLikedItems()
   }
 
    handlePageChange = (page) =>{
@@ -56,10 +68,6 @@ class App extends Component{
   
 }
      
-
-
-
-
 handleFilter = (filter) => {
   const items = this.state.items
   this.setState({
@@ -72,6 +80,8 @@ handleFilter = (filter) => {
 
 
 render(){
+
+
    const page_items = paginate(this.state.filter,this.state.currentPage,this.state.itemsPerPage)
    const {categories, selected_category} = this.state
   return (
@@ -130,7 +140,22 @@ render(){
       { this.state.cart_id !== null && <Purchase/>}
 
     </div>
-    
+
+    {/* <div className='row'>
+      <h1>Likes:</h1>
+      {likedItems.map(item =>
+         <Items 
+         key={item.item[0].iid}
+         item = {item.item[0]}
+         onLike={this.handleLike}
+         // likeStatus={false}
+         onAddToCart = {this.handleAddToCart}
+         />
+        
+      )}
+
+    </div> */}
+     
    
      </div>
 </div>      

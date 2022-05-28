@@ -1,3 +1,5 @@
+import React from "react";
+
 const ListGroup = ({categories,selected_category,onFilter}) => {
     return ( 
         <div className="list-group">

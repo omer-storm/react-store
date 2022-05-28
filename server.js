@@ -10,6 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/items', require('./api/item'));
+app.use('/api/likes', require('./api/like'));
 
 
 app.listen(PORT, () => console.log(`listening on http://localhost:${PORT}`) );

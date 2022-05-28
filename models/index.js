@@ -6,5 +6,6 @@ const mongoose = require("mongoose");
     
  
 module.exports = {
-    Item: require('./Item')
+    Item: require('./Item'),
+    Like: require('./Like')
 }
