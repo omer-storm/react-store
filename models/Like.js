@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose
 
 const itemSchema = new Schema({
-    "iid": Number
+    "iid": Schema.Types.ObjectId
   });
 
   

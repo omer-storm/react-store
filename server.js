@@ -11,7 +11,7 @@ app.use(express.json())
 
 app.use('/api/items', require('./api/item'));
 app.use('/api/likes', require('./api/like'));
-
+app.use('/api/categories', require('./api/categories'));
 
 app.listen(PORT, () => console.log(`listening on http://localhost:${PORT}`) );
 

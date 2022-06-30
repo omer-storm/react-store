@@ -3,6 +3,8 @@ import React from 'react'
 
 
 const Items = ({item, onAddToCart}) => {
+
+
   return ( 
     <div className = "col-4" >
     <div className = "card" >
@@ -18,7 +20,7 @@ const Items = ({item, onAddToCart}) => {
           {/* {item.status && <p className="alert alert-success"> Added to cart</p> } */}
           <Like
            status = {(item.like[0]) ? true : false}
-           id = {item.iid}
+           id = {item._id}
           />
           <h5 className="card-title" > {item.item} </h5>
           <h6 className="card-text m-2" >Price: ${item.price} || Quantity: {item.quantity}</h6>           

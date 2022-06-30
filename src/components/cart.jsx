@@ -8,9 +8,9 @@ class Cart extends Component{
     cartItem: []
   }
 
-  updateCart = async () => {
+  updateCart = async (action) => {
     if(this.props.item.qty > 0 ){
-    this.props.onUpdateQty(this.props.item.id)
+    this.props.onUpdateQty(this.props.item.id,action)
     let item = await axios.get( `/api/items/${this.props.item.id}`)
     let cartItem = this.state.cartItem
     const prev_item =  cartItem.find((i) => i.iid === item.data.iid )
@@ -19,10 +19,11 @@ class Cart extends Component{
        cartItem.push(item)
       }
      else{
-      item = prev_item 
-      ++item.qty
-      const index = cartItem.indexOf(item)
-      cartItem[index] =item 
+      let cart_item = prev_item 
+      if(action === "inc") if(++cart_item <= item.qty) ++cart_item.qty 
+      else if(cart_item.qty > 1)--cart_item.qty
+      const index = cartItem.indexOf(cart_item)
+      cartItem[index] =cart_item 
      }
      this.setState({cartItem})
     }
@@ -30,26 +31,22 @@ class Cart extends Component{
   }
 
   componentDidMount(){
-    this.updateCart()
+    this.updateCart("inc")
   }
 
    componentDidUpdate(prevProps){
      if(prevProps.item !== this.props.item)
-      this.updateCart()
+      this.updateCart("inc")
   }
 
   
   
-  // handleIncrement = (item,action) => {
-  //   console.log("okay ffrom child")
-  //   }   
-  
-  // }
+
   
   // handleRemove = (item) => {
-  //   const cart = this.state.cart;
-  //   cart.splice(cart.indexOf(item),1)
-  //   this.setState({cart})
+  //   const cartItem = this.state.cartItem;
+  //   cartItem.splice(cartItem.indexOf(item),1)
+  //   this.setState({cartItem})
   // }
 
   render(){
@@ -77,16 +74,17 @@ class Cart extends Component{
         width={200}
         > 
          </img></td>
-      <td><br/>
+      {/* <td><br/>
       <div className="text-center">
-      {/* <button  className='btn btn-sm btn-success m-1'>-</button>  */}
+      <button  className='btn btn-sm btn-success m-1' onClick={() => this.updateCart("dec")}>-</button> 
       <h6 className="text-center">{item.qty}</h6>
-      {/* <button  className='btn btn-sm btn-success'>+</button> */}
+      <button  className='btn btn-sm btn-success' onClick={() => this.updateCart("inc")}>+</button>
       </div>
-      </td>
+      </td> */}
       <td><br/><br/><h6>${item.data.price * item.qty }</h6></td>
-      <td><br/><button  className="btn btn-sm btn-danger">Remove</button></td>
-      </tr>)}
+      {/* <td><br/><button  className="btn btn-sm btn-danger">Remove</button></td> */}
+      </tr>
+      )}
       </tbody>
       </table>
      

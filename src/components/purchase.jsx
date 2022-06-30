@@ -1,25 +1,20 @@
-import { Modal,Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import PurchaseForm from "./purchaseForm";
 
-
 const Purchase = () => {
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
-    return (
-      <React.Fragment>
-         
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-        <Button variant="primary" size="lg" onClick={handleShow}>
-          Proceed to payment
-        </Button>
-       
-        
-  
-        <Modal show={show} onHide={handleClose}>
+  return (
+    <React.Fragment>
+      <Button variant="primary" size="lg" onClick={handleShow}>
+        Proceed to payment
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
@@ -31,9 +26,9 @@ const Purchase = () => {
             Cancel
           </Button>
         </Modal.Footer>
-        </Modal>
-      </React.Fragment>
-    );
-}
- 
+      </Modal>
+    </React.Fragment>
+  );
+};
+
 export default Purchase;

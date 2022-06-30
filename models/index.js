@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-(async()=> {
-    await mongoose.connect('mongodb://localhost:27017/react-store');
-    })();
-    
- 
+(async () => {
+  await mongoose.connect("mongodb://localhost:27017/react-store");
+})();
+
 module.exports = {
-    Item: require('./Item'),
-    Like: require('./Like')
-}
+  Item: require("./Item"),
+  Like: require("./Like"),
+  Category: require("./Category"),
+};
