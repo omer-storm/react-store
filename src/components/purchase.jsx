@@ -10,7 +10,7 @@ const Purchase = () => {
 
   return (
     <React.Fragment>
-      <Button variant="primary" size="lg" onClick={handleShow}>
+      <Button variant="primary" size="lg" onClick={handleShow} >
         Proceed to payment
       </Button>
 

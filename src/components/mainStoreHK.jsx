@@ -6,6 +6,7 @@ import paginate from "../utils/paginate";
 import ListGroup from "./common/listGroup";
 import axios from "axios";
 import Cart from "./cartHK";
+import Purchase from "./purchase";
 
 function MainStoreHK() {
   const [allItems, setAllItems] = useState([]);
@@ -13,8 +14,8 @@ function MainStoreHK() {
   const [selectedCategory, setSelectedCategory] = useState("books");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsCount, setItemsCount] = useState(1);
-  const [cartItem, setCartItem] = useState([]);
-  const [itemID, setitemID] = useState(-1);
+  const [cartItems, setCartItems] = useState([]);
+  const [itemAction, setitemAction] = useState({});
 
   const itemsPerPage = 6;
 
@@ -28,22 +29,59 @@ function MainStoreHK() {
   };
 
   const addToCart = (item) => {
-    let prevItem = cartItem.filter((i) => item.iid === i.iid);
+    let prevItem = cartItems.filter((i) => item.iid === i.iid);
     if (item.quantity !== 0) {
       if (prevItem.length === 0) {
-        cartItem.push({ ...item, qty: 1 });
-        setCartItem(cartItem);
-        setitemID({ id: item.iid, qty: 1 });
+        let {quantity} = item
+        quantity--
+        cartItems.push({ ...item, qty: 1, quantity });
       } else {
-        const index = cartItem.indexOf(prevItem[0]);
-        cartItem[index].qty++;
-        setCartItem(cartItem);
-        setitemID({ id: item.iid, qty: cartItem[index].qty });
+        const index = cartItems.indexOf(prevItem[0]);
+        cartItems[index].qty++;
+        cartItems[index].quantity--
       }
       const index = items.indexOf(item);
       items[index].quantity--;
+
+      setCartItems(cartItems);
+      setitemAction({ id: item.iid, action: "addToCart" });
       setItems(items);
     }
+  };
+
+  const removeFromCart = (item) => {
+    const index = cartItems.indexOf(item);
+    const listItem = allItems.filter((i) => i.iid === item.iid);
+    const indexListItem = allItems.indexOf(listItem[0]);
+
+    allItems[indexListItem].quantity =
+      allItems[indexListItem].quantity + item.qty;
+    cartItems.splice(index, 1);
+
+    setAllItems(allItems);
+    setCartItems(cartItems);
+    setitemAction({ id: item.iid, action: "removeFromCart" });
+  };
+
+  const counterAction = (item, action) => {
+
+      const index = cartItems.indexOf(item);
+      const listItem = allItems.filter((i) => i.iid === item.iid);
+      const indexListItem = allItems.indexOf(listItem[0]);
+
+      if (action === "inc" && item.quantity != 0) {
+        allItems[indexListItem].quantity--;
+        cartItems[index].quantity--;
+        cartItems[index].qty++;
+      } else if(action === "dec" && cartItems[index].qty > 1) {
+        allItems[indexListItem].quantity++;
+        cartItems[index].quantity++;
+        cartItems[index].qty--;
+      }
+      setAllItems(allItems);
+      setCartItems(cartItems);
+      setitemAction({});
+    
   };
 
   useEffect(() => {
@@ -69,12 +107,26 @@ function MainStoreHK() {
           <br />
           <div className="row">
             {items.map((item) => (
-              <Items key={item.iid} item={item} onAddToCart={addToCart} />
+              <Items
+                key={item.iid}
+                item={item}
+                onAddToCart={addToCart}
+                lastSelectedItemAction={itemAction}
+              />
             ))}
           </div>
         </div>
 
-        <div className="col-4">{itemID !== -1 && <Cart item={cartItem} />}</div>
+        <div className="col-4">
+          {cartItems.length !== 0 && (
+            <Cart
+              items={cartItems}
+              onRemoveFromCart={removeFromCart}
+              onCounterAction={counterAction}
+            />
+          )}
+          {cartItems.length !== 0 && <Purchase />}
+        </div>
 
         <Pagination
           onPageChange={pageChange}

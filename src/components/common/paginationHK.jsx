@@ -4,14 +4,16 @@ import React from "react";
 function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
   const [currentPage, setCurrentPage] = useState(1);
   const paginationRowLength = 3;
-  const [previousPages, setPreviousPages] = useState([1]);
-  const [previousPageTop, setPreviousPageTop] = useState(0);
-  const [totalPages,setTotalPages] = useState(Math.ceil(itemsCount / itemsPerPage));
+  const [previousPages, setPreviousPages] = useState([1, 2, 3]);
+  const [previousPageTop, setPreviousPageTop] = useState(2);
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(itemsCount / itemsPerPage)
+  );
 
   useEffect(() => {
     setCurrentPage(1);
-    setTotalPages(Math.ceil(itemsCount / itemsPerPage))
-  }, [itemsCount]);
+    setTotalPages(Math.ceil(itemsCount / itemsPerPage));
+  }, [itemsCount, itemsPerPage]);
 
   const PageChange = (page) => {
     setCurrentPage(page);
@@ -41,10 +43,14 @@ function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
       updatePreviousPageTop++;
       previousPages[updatePreviousPageTop] = page;
     } else {
-      previousPages[updatePreviousPageTop - 1] = page - 1;
-      previousPages[updatePreviousPageTop] = page;
+      if (page !== 4) {
+        previousPages[updatePreviousPageTop - 1] = page - 1;
+        previousPages[updatePreviousPageTop] = page;
+      } else {
+        previousPages[updatePreviousPageTop] = page + 1;
+        previousPages[updatePreviousPageTop - 1] = page;
+      }
     }
-
     PageChange(page);
     setPreviousPages(previousPages);
     setPreviousPageTop(updatePreviousPageTop);
