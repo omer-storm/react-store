@@ -69,7 +69,7 @@ function MainStoreHK() {
       const listItem = allItems.filter((i) => i.iid === item.iid);
       const indexListItem = allItems.indexOf(listItem[0]);
 
-      if (action === "inc" && item.quantity != 0) {
+      if (action === "inc" && item.quantity !== 0) {
         allItems[indexListItem].quantity--;
         cartItems[index].quantity--;
         cartItems[index].qty++;

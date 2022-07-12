@@ -1,6 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
-import PurchaseForm from "./purchaseForm";
+import PurchaseForm from "./purchaseFormHK";
 
 const Purchase = () => {
   const [show, setShow] = useState(false);
