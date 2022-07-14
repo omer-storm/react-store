@@ -19,6 +19,12 @@ function MainStoreHK() {
 
   const itemsPerPage = 6;
 
+  const formPost = async (form) => {
+    await axios.post("/api/orders", {form,cartItems});
+    setCartItems([])
+    setitemAction({})
+  };
+
   const pageChange = (page) => {
     setCurrentPage(page);
   };
@@ -32,13 +38,13 @@ function MainStoreHK() {
     let prevItem = cartItems.filter((i) => item.iid === i.iid);
     if (item.quantity !== 0) {
       if (prevItem.length === 0) {
-        let {quantity} = item
-        quantity--
+        let { quantity } = item;
+        quantity--;
         cartItems.push({ ...item, qty: 1, quantity });
       } else {
         const index = cartItems.indexOf(prevItem[0]);
         cartItems[index].qty++;
-        cartItems[index].quantity--
+        cartItems[index].quantity--;
       }
       const index = items.indexOf(item);
       items[index].quantity--;
@@ -64,24 +70,22 @@ function MainStoreHK() {
   };
 
   const counterAction = (item, action) => {
+    const index = cartItems.indexOf(item);
+    const listItem = allItems.filter((i) => i.iid === item.iid);
+    const indexListItem = allItems.indexOf(listItem[0]);
 
-      const index = cartItems.indexOf(item);
-      const listItem = allItems.filter((i) => i.iid === item.iid);
-      const indexListItem = allItems.indexOf(listItem[0]);
-
-      if (action === "inc" && item.quantity !== 0) {
-        allItems[indexListItem].quantity--;
-        cartItems[index].quantity--;
-        cartItems[index].qty++;
-      } else if(action === "dec" && cartItems[index].qty > 1) {
-        allItems[indexListItem].quantity++;
-        cartItems[index].quantity++;
-        cartItems[index].qty--;
-      }
-      setAllItems(allItems);
-      setCartItems(cartItems);
-      setitemAction({});
-    
+    if (action === "inc" && item.quantity !== 0) {
+      allItems[indexListItem].quantity--;
+      cartItems[index].quantity--;
+      cartItems[index].qty++;
+    } else if (action === "dec" && cartItems[index].qty > 1) {
+      allItems[indexListItem].quantity++;
+      cartItems[index].quantity++;
+      cartItems[index].qty--;
+    }
+    setAllItems(allItems);
+    setCartItems(cartItems);
+    setitemAction({});
   };
 
   useEffect(() => {
@@ -125,7 +129,7 @@ function MainStoreHK() {
               onCounterAction={counterAction}
             />
           )}
-          {cartItems.length !== 0 && <Purchase />}
+          {cartItems.length !== 0 && <Purchase onFormPost={formPost} />}
         </div>
 
         <Pagination

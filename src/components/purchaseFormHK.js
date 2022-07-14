@@ -1,18 +1,24 @@
 import { useState } from "react";
 import React from "react";
+// import axios from "axios";
 
-const PurchaseForm = () => {
+const PurchaseForm = ({ onFormPost }) => {
   const [info, setInfo] = useState({
     paymentMethod: "cashOnDelivery",
     creditCardInfo: {},
   });
 
   const handleSubmit = (e) => {
-    console.log(info);
     e.preventDefault();
+    onFormPost(info);
+    setInfo({
+      paymentMethod: "cashOnDelivery",
+      creditCardInfo: {},
+    });
   };
 
   const handleChange = ({ currentTarget: input }) => {
+    if (input.name === "paymentMethod") info.creditCardInfo = {};
     info[input.name] = input.value;
     setInfo({ ...info });
   };
@@ -27,10 +33,10 @@ const PurchaseForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="form-group col-12">
-            <label htmlFor="full_name">Full Name</label>
+            <label htmlFor="fullName">Full Name</label>
             <input
-              id="full_name"
-              name="full_name"
+              id="fullName"
+              name="fullName"
               type="text"
               className="form-control"
               onChange={handleChange}

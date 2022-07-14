@@ -7,29 +7,25 @@ router.get("/", async function (req, res) {
       $lookup: {
         from: "likes",
         localField: "_id",
-        foreignField: "iid",
+        foreignField: "item",
         as: "like",
       },
     },
   ]);
-
   res.status(200).json(items);
 });
 
 router.get("/filter/:category", async function (req, res) {
-
   const items = await db.Item.aggregate([
-    
-      {$match: { category: req.params.category }},
-       {$lookup: {
+    { $match: { category: req.params.category } },
+    {
+      $lookup: {
         from: "likes",
         localField: "_id",
         foreignField: "iid",
         as: "like",
-      }},
-      
-     
-    
+      },
+    },
   ]);
 
   res.status(200).json(items);

@@ -2,7 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import PurchaseForm from "./purchaseFormHK";
 
-const Purchase = () => {
+const Purchase = ({onFormPost}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,7 +19,7 @@ const Purchase = () => {
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PurchaseForm />
+          <PurchaseForm onFormPost={onFormPost} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
