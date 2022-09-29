@@ -57,7 +57,7 @@ function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
   };
 
   return (
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" style={{marginTop: 15}}>
       <ul className="pagination justify-content-center">
         {
           <li

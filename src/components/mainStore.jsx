@@ -19,7 +19,7 @@ class MainStore extends Component {
     paginationRowLength: 3,
     resetPages: false,
     categories: ["books", "music"],
-    selected_category: "books"
+    selected_category: "books",
   };
 
   getItems = async (filter) => {
@@ -28,7 +28,7 @@ class MainStore extends Component {
       items: items.data,
       filter: items.data.filter((item) => {
         return item.category === filter;
-      })
+      }),
     });
   };
 
@@ -72,12 +72,11 @@ class MainStore extends Component {
       }),
       selected_category: filter,
       resetPages: true,
-      currentPage: 1
+      currentPage: 1,
     });
   };
 
   render() {
-    
     const page_items = paginate(
       this.state.filter,
       this.state.currentPage,
@@ -85,58 +84,60 @@ class MainStore extends Component {
     );
 
     const { categories, selected_category } = this.state;
-    
+
     return (
-      <div className="container">
+      <React>
         <Navbar />
 
-        <div className="row">
-          <div className="App col-8">
-            <div className="row">
-              <div className="col-4">
-                <ListGroup
-                  onFilter={this.handleFilter}
-                  categories={categories}
-                  selected_category={selected_category}
-                />
+        <div className="container">
+          <div className="row">
+            <div className="App col-8">
+              <div className="row">
+                <div className="col-4">
+                  <ListGroup
+                    onFilter={this.handleFilter}
+                    categories={categories}
+                    selected_category={selected_category}
+                  />
+                </div>
               </div>
+
+              <br />
+
+              <div className="row">
+                {page_items.map((item) => (
+                  <Items
+                    key={item.iid}
+                    item={item}
+                    onLike={this.handleLike}
+                    onAddToCart={this.handleAddToCart}
+                  />
+                ))}
+              </div>
+
+              <br />
+
+              <Pagination
+                itemsCount={this.state.filter.length}
+                itemsPerPage={this.state.itemsPerPage}
+                currentPage={this.state.currentPage}
+                paginationRowLength={this.state.paginationRowLength}
+                resetPages={this.state.resetPages}
+                onPageResume={this.handlePageResume}
+                onPageChange={this.handlePageChange}
+              />
             </div>
 
-            <br />
-
-            <div className="row">
-              {page_items.map((item) => (
-                <Items
-                  key={item.iid}
-                  item={item}
-                  onLike={this.handleLike}
-                  onAddToCart={this.handleAddToCart}
-                />
-              ))}
-            </div>
-
-            <br />
-
-            <Pagination
-              itemsCount={this.state.filter.length}
-              itemsPerPage={this.state.itemsPerPage}
-              currentPage={this.state.currentPage}
-              paginationRowLength={this.state.paginationRowLength}
-              resetPages={this.state.resetPages}
-              onPageResume={this.handlePageResume}
-              onPageChange={this.handlePageChange}
-            />
-          </div>
-
-          {/* <div className='col-4'>
+            {/* <div className='col-4'>
 
       {this.state.cart_id !== null && <Cart item = {this.state.cart_id} onUpdateQty = {this.updateQty}/>}
       
       { this.state.cart_id !== null && <Purchase/>}
 
     </div> */}
+          </div>
         </div>
-      </div>
+      </React>
     );
   }
 }

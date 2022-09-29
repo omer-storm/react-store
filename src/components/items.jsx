@@ -3,8 +3,8 @@ import React from "react";
 
 const Items = ({ item, onAddToCart, lastSelectedItemAction }) => {
   return (
-    <div className="col-4">
-      <div className="card">
+    <div className="col-4" style={{ marginBottom: 20 }}>
+      <div className="card" style={{ paddingTop: 10 }}>
         <img
           className="card-img-top"
           src={item.image}
@@ -16,21 +16,30 @@ const Items = ({ item, onAddToCart, lastSelectedItemAction }) => {
           <Like status={item.like[0] ? true : false} id={item._id} />
           {lastSelectedItemAction.id === item.iid && (
             <div
+            style={{paddingTop: 20} }
               className={
                 lastSelectedItemAction.action === "addToCart"
                   ? "alert alert-success"
                   : "alert alert-danger"
               }
-              style={{ height: 10 }}
             >
-              <p style={{ marginTop: -10 }}>{
-                lastSelectedItemAction.action === "addToCart"
+              <h6 style={{fontWeight: "normal"}}>
+                {lastSelectedItemAction.action === "addToCart"
                   ? "Added To Cart"
-                  : "Removed From Cart"
-              }</p>
+                  : "Removed From Cart"}
+              </h6>
             </div>
           )}
-          <h5 className="card-title"> {item.item} </h5>
+          <h5
+            className="card-title"
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {item.item}
+          </h5>
           <h6 className="card-text m-2">
             Price: ${item.price} || Quantity: {item.quantity}
           </h6>

@@ -20,9 +20,9 @@ function MainStoreHK() {
   const itemsPerPage = 6;
 
   const formPost = async (form) => {
-    await axios.post("/api/orders", {form,cartItems});
-    setCartItems([])
-    setitemAction({})
+    await axios.post("/api/orders", { form, cartItems });
+    setCartItems([]);
+    setitemAction({});
   };
 
   const pageChange = (page) => {
@@ -118,6 +118,11 @@ function MainStoreHK() {
                 lastSelectedItemAction={itemAction}
               />
             ))}
+            <Pagination
+              onPageChange={pageChange}
+              itemsCount={itemsCount}
+              itemsPerPage={itemsPerPage}
+            />
           </div>
         </div>
 
@@ -131,12 +136,6 @@ function MainStoreHK() {
           )}
           {cartItems.length !== 0 && <Purchase onFormPost={formPost} />}
         </div>
-
-        <Pagination
-          onPageChange={pageChange}
-          itemsCount={itemsCount}
-          itemsPerPage={itemsPerPage}
-        />
       </div>
     </div>
   );
