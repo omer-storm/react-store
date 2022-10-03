@@ -1,6 +1,6 @@
 import React from "react";
 
-function cartHK({ items, onRemoveFromCart, onCounterAction }) {
+function Cart({ items, onRemoveFromCart, onCounterAction }) {
   return (
     // <pre>{JSON.stringify(items, null, 2)}</pre>
 
@@ -59,4 +59,4 @@ function cartHK({ items, onRemoveFromCart, onCounterAction }) {
   );
 }
 
-export default cartHK;
+export default Cart;

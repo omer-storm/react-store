@@ -1,4 +1,4 @@
-import Like from "./common/like";
+import Like from "./common/Like";
 import React from "react";
 
 const Items = ({ item, onAddToCart, lastSelectedItemAction }) => {

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Items from "./items";
-import Navbar from "./navbar";
-import Pagination from "./common/paginationHK";
+import Items from "./Items";
+import Navbar from "./Navbar";
+import Pagination from "./common/Pagination";
 import paginate from "../utils/paginate";
-import ListGroup from "./common/listGroup";
+import ListGroup from "./common/ListGroup";
+import Cart from "./Cart";
+import Purchase from "./Purchase";
 import axios from "axios";
-import Cart from "./cartHK";
-import Purchase from "./purchase";
 
-function MainStoreHK() {
+function MainStore() {
   const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("books");
@@ -141,4 +141,4 @@ function MainStoreHK() {
   );
 }
 
-export default MainStoreHK;
+export default MainStore;

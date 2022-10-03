@@ -9,8 +9,8 @@ app.use(cors())
 
 app.use(express.json())
 
-app.use('/api/items', require('./api/item'));
-app.use('/api/likes', require('./api/like'));
+app.use('/api/items', require('./api/items'));
+app.use('/api/likes', require('./api/likes'));
 app.use('/api/categories', require('./api/categories'));
 app.use('/api/orders', require('./api/orders'));
 

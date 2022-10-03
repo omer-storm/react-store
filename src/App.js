@@ -1,13 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainStoreHK from "./components/mainStoreHK";
-import LikedItems from "./components/likedItems";
+import MainStore from "./components/MainStore";
+import LikedItems from "./components/LikedItems";
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainStoreHK />} />
+          <Route path="/" element={<MainStore />} />
           <Route path="/likes" element={<LikedItems />} />
         </Routes>
       </BrowserRouter>

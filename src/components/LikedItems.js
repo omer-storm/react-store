@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Navbar from './navbar'
+import Navbar from './Navbar'
 // import Items from './items'
 
 class LikedItems extends Component {
@@ -35,6 +35,7 @@ class LikedItems extends Component {
                                src = {item.item[0].image}
                                height= {200}
                                width = {200}
+                               alt= ""
                               />
                           </div>
                          
