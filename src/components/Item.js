@@ -1,7 +1,7 @@
 import Like from "./common/Like";
 import React from "react";
 
-const Items = ({ item, onAddToCart, lastSelectedItemAction }) => {
+const Item = ({ item, onAddToCart, lastSelectedItemAction }) => {
   return (
     <div className="col-4" style={{ marginBottom: 20 }}>
       <div className="card" style={{ paddingTop: 10 }}>
@@ -56,4 +56,4 @@ const Items = ({ item, onAddToCart, lastSelectedItemAction }) => {
   );
 };
 
-export default Items;
+export default Item;

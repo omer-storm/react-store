@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Items from "./Items";
+import Item from "./Item";
 import Navbar from "./Navbar";
 import Pagination from "./common/Pagination";
 import paginate from "../utils/paginate";
@@ -102,10 +102,10 @@ function MainStore() {
     axios.get(`/api/items/`).then((items) => {
       setAllItems(items.data);
     });
-  }, []);
+    dispatch(getCategories());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getCategories());
     const filter = allItems.filter((i) => i.category === selectedCategory);
     setItemsCount(filter.length);
     setItems(paginate(filter, currentPage, itemsPerPage));
@@ -126,7 +126,7 @@ function MainStore() {
           <br />
           <div className="row">
             {items.map((item) => (
-              <Items
+              <Item
                 key={item.iid}
                 item={item}
                 onAddToCart={addToCart}
