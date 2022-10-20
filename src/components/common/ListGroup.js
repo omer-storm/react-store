@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
-const ListGroup = ({ onFilter }) => {
-  const [categories, setCategories] = useState([]);
+const ListGroup = ({ onFilter, categories }) => {
   const [selectedCategory, setSelectedCategory] = useState("books");
-
-  const getCategories = async () => {
-    const categories = await axios.get("/api/categories/");
-    setCategories(categories.data);
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
 
   const filter = (category) => {
     setSelectedCategory(category);

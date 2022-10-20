@@ -7,15 +7,23 @@ import ListGroup from "./common/ListGroup";
 import Cart from "./Cart";
 import Purchase from "./Purchase";
 import axios from "axios";
+import { getCategories } from "../features/categories/categorySlice";
+import { useSelector, useDispatch } from "react-redux";
 
 function MainStore() {
   const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("books");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsCount, setItemsCount] = useState(1);
   const [cartItems, setCartItems] = useState([]);
   const [itemAction, setitemAction] = useState({});
+
+  const { categories } = useSelector((state) => state.categories);
+
+  const dispatch = useDispatch();
+
 
   const itemsPerPage = 6;
 
@@ -88,17 +96,24 @@ function MainStore() {
     setitemAction({});
   };
 
+  // const getCategories = async () => {
+  //   const categories = await axios.get("/api/categories/");
+  //   setCategories(categories.data);
+  // };
+
   useEffect(() => {
     axios.get(`/api/items/`).then((items) => {
       setAllItems(items.data);
     });
+    
   }, []);
 
   useEffect(() => {
+    dispatch(getCategories());
     const filter = allItems.filter((i) => i.category === selectedCategory);
     setItemsCount(filter.length);
     setItems(paginate(filter, currentPage, itemsPerPage));
-  }, [currentPage, selectedCategory, allItems]);
+  }, [currentPage, selectedCategory, allItems, dispatch]);
 
   return (
     <div className="container">
@@ -106,7 +121,7 @@ function MainStore() {
       <div className="row">
         <div className="App col-8">
           <div className="col-4">
-            <ListGroup onFilter={handleFilter} />
+            <ListGroup onFilter={handleFilter} categories={categories} />
           </div>
           <br />
           <div className="row">
