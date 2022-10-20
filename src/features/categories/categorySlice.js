@@ -3,6 +3,7 @@ import categoryService from "./categoryService";
 
 const initialState = {
   categories: [],
+  selectedCategory: "books",
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -32,6 +33,9 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -51,5 +55,5 @@ export const categorySlice = createSlice({
   },
 });
 
-export const { reset } = categorySlice.actions;
+export const { reset, setSelectedCategory } = categorySlice.actions;
 export default categorySlice.reducer;

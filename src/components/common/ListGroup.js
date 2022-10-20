@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ListGroup = ({ onFilter, categories }) => {
-  const [selectedCategory, setSelectedCategory] = useState("books");
+const ListGroup = ({ onFilter, categories, selectedCategory }) => {
+  // const [selectedCategory, setSelectedCategory] = useState("books");
 
-  const filter = (category) => {
-    setSelectedCategory(category);
-    onFilter(category);
-  };
+  // const filter = (category) => {
+  //   setSelectedCategory(category);
+  //   onFilter(category);
+  // };
 
   return (
     <React.Fragment>
@@ -14,7 +14,7 @@ const ListGroup = ({ onFilter, categories }) => {
         {categories.map((category, index) => (
           <button
             key={index}
-            onClick={() => filter(category.name)}
+            onClick={() => onFilter(category.name)}
             className={
               category.name === selectedCategory
                 ? "list-group-item list-group-item-action active"

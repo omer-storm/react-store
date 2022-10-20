@@ -7,23 +7,27 @@ import ListGroup from "./common/ListGroup";
 import Cart from "./Cart";
 import Purchase from "./Purchase";
 import axios from "axios";
-import { getCategories } from "../features/categories/categorySlice";
+import {
+  getCategories,
+  setSelectedCategory,
+} from "../features/categories/categorySlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function MainStore() {
   const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
   // const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("books");
+  // const [selectedCategory, setSelectedCategory] = useState("books");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsCount, setItemsCount] = useState(1);
   const [cartItems, setCartItems] = useState([]);
   const [itemAction, setitemAction] = useState({});
 
-  const { categories } = useSelector((state) => state.categories);
+  const { categories, selectedCategory } = useSelector(
+    (state) => state.categories
+  );
 
   const dispatch = useDispatch();
-
 
   const itemsPerPage = 6;
 
@@ -39,7 +43,8 @@ function MainStore() {
 
   const handleFilter = (category) => {
     setCurrentPage(1);
-    setSelectedCategory(category);
+    dispatch(setSelectedCategory(category));
+    // setSelectedCategory(category);
   };
 
   const addToCart = (item) => {
@@ -105,7 +110,6 @@ function MainStore() {
     axios.get(`/api/items/`).then((items) => {
       setAllItems(items.data);
     });
-    
   }, []);
 
   useEffect(() => {
@@ -121,7 +125,7 @@ function MainStore() {
       <div className="row">
         <div className="App col-8">
           <div className="col-4">
-            <ListGroup onFilter={handleFilter} categories={categories} />
+            <ListGroup onFilter={handleFilter} categories={categories} selectedCategory={selectedCategory} />
           </div>
           <br />
           <div className="row">
