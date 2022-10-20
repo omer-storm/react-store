@@ -1,13 +1,6 @@
 import React from "react";
 
 const ListGroup = ({ onFilter, categories, selectedCategory }) => {
-  // const [selectedCategory, setSelectedCategory] = useState("books");
-
-  // const filter = (category) => {
-  //   setSelectedCategory(category);
-  //   onFilter(category);
-  // };
-
   return (
     <React.Fragment>
       <div className="list-group">

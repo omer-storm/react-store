@@ -16,8 +16,6 @@ import { useSelector, useDispatch } from "react-redux";
 function MainStore() {
   const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
-  // const [categories, setCategories] = useState([]);
-  // const [selectedCategory, setSelectedCategory] = useState("books");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsCount, setItemsCount] = useState(1);
   const [cartItems, setCartItems] = useState([]);
@@ -44,7 +42,6 @@ function MainStore() {
   const handleFilter = (category) => {
     setCurrentPage(1);
     dispatch(setSelectedCategory(category));
-    // setSelectedCategory(category);
   };
 
   const addToCart = (item) => {
@@ -101,11 +98,6 @@ function MainStore() {
     setitemAction({});
   };
 
-  // const getCategories = async () => {
-  //   const categories = await axios.get("/api/categories/");
-  //   setCategories(categories.data);
-  // };
-
   useEffect(() => {
     axios.get(`/api/items/`).then((items) => {
       setAllItems(items.data);
@@ -125,7 +117,11 @@ function MainStore() {
       <div className="row">
         <div className="App col-8">
           <div className="col-4">
-            <ListGroup onFilter={handleFilter} categories={categories} selectedCategory={selectedCategory} />
+            <ListGroup
+              onFilter={handleFilter}
+              categories={categories}
+              selectedCategory={selectedCategory}
+            />
           </div>
           <br />
           <div className="row">
