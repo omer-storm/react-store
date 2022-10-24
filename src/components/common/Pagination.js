@@ -1,80 +1,46 @@
-import { useEffect, useState } from "react";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  pageChange,
+  previousPageChange,
+  nextPageChange,
+} from "../../features/mainStore/pagination/paginationSlice";
 
-function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const paginationRowLength = 3;
-  const [previousPages, setPreviousPages] = useState([1, 2, 3]);
-  const [previousPageTop, setPreviousPageTop] = useState(2);
-  const [totalPages, setTotalPages] = useState(
-    Math.ceil(itemsCount / itemsPerPage)
-  );
+function Pagination() {
+  const {
+    currentPage,
+    paginationRowLength,
+    previousPages,
+    previousPageTop,
+    totalPages,
+  } = useSelector((state) => state.pagination);
+  const { filteredItems } = useSelector((state) => state.items);
 
-  useEffect(() => {
-    setCurrentPage(1);
-    setTotalPages(Math.ceil(itemsCount / itemsPerPage));
-  }, [itemsCount, itemsPerPage]);
+  const dispatch = useDispatch();
 
-  const PageChange = (page) => {
-    setCurrentPage(page);
-    onPageChange(page);
-  };
-
-  const PreviousPageChange = (page) => {
-    const index = previousPages.indexOf(page - 1);
-    if (index === -1) {
-      if (page > paginationRowLength) {
-        previousPages[previousPageTop - 1] = page - 1;
-        previousPages[previousPageTop] = page;
-      }
-    } else {
-      previousPages[previousPageTop] = page + 1;
-      previousPages[previousPageTop - 1] = page;
-    }
-
-    setPreviousPages(previousPages);
-    PageChange(page);
-  };
-
-  const NextPageChange = (page) => {
-    let updatePreviousPageTop = previousPageTop;
-
-    if (previousPageTop <= paginationRowLength) {
-      updatePreviousPageTop++;
-      previousPages[updatePreviousPageTop] = page;
-    } else {
-      if (page !== 4) {
-        previousPages[updatePreviousPageTop - 1] = page - 1;
-        previousPages[updatePreviousPageTop] = page;
-      } else {
-        previousPages[updatePreviousPageTop] = page + 1;
-        previousPages[updatePreviousPageTop - 1] = page;
-      }
-    }
-    PageChange(page);
-    setPreviousPages(previousPages);
-    setPreviousPageTop(updatePreviousPageTop);
-  };
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const paginationRowLength = 3;
+  // const [previousPages, setPreviousPages] = useState([1, 2, 3]);
+  // const [previousPageTop, setPreviousPageTop] = useState(2);
+  // const [totalPages, setTotalPages] = useState(
+  //   Math.ceil(itemsCount / itemsPerPage)
+  // );
 
   return (
-    <nav aria-label="Page navigation" style={{marginTop: 15}}>
+    <nav aria-label="Page navigation" style={{ marginTop: 15 }}>
       <ul className="pagination justify-content-center">
-        {
-          <li
-            className={currentPage === 1 ? "page-item disabled" : "page-item"}
+        <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
+          <button
+            onClick={() =>
+              currentPage > 1 && previousPages.indexOf(currentPage - 1) !== -1
+                ? dispatch(pageChange({ filteredItems, page: currentPage - 1 }))
+                : dispatch(previousPageChange({ filteredItems, page: currentPage - 1 }))
+            }
+            className="page-link"
           >
-            <button
-              onClick={() =>
-                currentPage > 1 && previousPages.indexOf(currentPage - 1) !== -1
-                  ? PageChange(currentPage - 1)
-                  : PreviousPageChange(currentPage - 1)
-              }
-              className="page-link"
-            >
-              previous
-            </button>
-          </li>
-        }
+            previous
+          </button>
+        </li>
 
         {previousPages.map((page, index) => (
           <React.Fragment key={index}>
@@ -83,7 +49,10 @@ function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
                 page !== currentPage ? "page-item" : "page-item active"
               }
             >
-              <button onClick={() => PageChange(page)} className="page-link">
+              <button
+                onClick={() => dispatch(pageChange({ filteredItems, page }))}
+                className="page-link"
+              >
                 {page}
               </button>
             </li>
@@ -102,8 +71,8 @@ function Pagination({ onPageChange, itemsCount, itemsPerPage }) {
             <button
               onClick={() =>
                 previousPages.indexOf(currentPage + 1) === -1
-                  ? NextPageChange(currentPage + 1)
-                  : PageChange(currentPage + 1)
+                  ? dispatch(nextPageChange({ filteredItems, page: currentPage + 1 }))
+                  : dispatch(pageChange({ filteredItems, page: currentPage + 1 }))
               }
               className="page-link"
             >

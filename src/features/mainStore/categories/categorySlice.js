@@ -34,8 +34,8 @@ export const categorySlice = createSlice({
   reducers: {
     reset: (state) => initialState,
     setSelectedCategory: (state, action) => {
-      state.selectedCategory = action.payload
-    }
+      state.selectedCategory = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder

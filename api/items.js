@@ -22,7 +22,7 @@ router.get("/filter/:category", async function (req, res) {
       $lookup: {
         from: "likes",
         localField: "_id",
-        foreignField: "iid",
+        foreignField: "item",
         as: "like",
       },
     },

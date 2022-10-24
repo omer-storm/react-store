@@ -7,8 +7,8 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/:category", async function (req, res) {
-    const category = await db.Category.find({"name": req.params.category});
-    res.status(200).json(category);
-  });
+  const category = await db.Category.find({ name: req.params.category });
+  res.status(200).json(category);
+});
 
 module.exports = router;

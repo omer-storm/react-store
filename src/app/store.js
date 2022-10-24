@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categoryReducer from "../features/categories/categorySlice";
+import categoryReducer from "../features/mainStore/categories/categorySlice";
+import itemReducer from "../features/mainStore/items/itemSlice";
+import paginationReducer from "../features/mainStore/pagination/paginationSlice";
 
 export const store = configureStore({
-  reducer: { 
+  reducer: {
     categories: categoryReducer,
+    items: itemReducer,
+    pagination: paginationReducer
   },
 });
