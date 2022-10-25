@@ -1,7 +1,20 @@
 import Like from "./common/Like";
 import React from "react";
+import { addToCart } from "../features/mainStore/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { quantityDecrement } from "../features/mainStore/items/itemSlice";
 
 const Item = ({ item }) => {
+  const dispatch = useDispatch();
+  const { filteredItems } = useSelector((state) => state.items);
+
+  const cartClick = (item) => {
+    if (item.quantity !== 0) {
+      dispatch(quantityDecrement(filteredItems.indexOf(item)));
+      dispatch(addToCart({ item }));
+    }
+  };
+
   return (
     <div className="col-4" style={{ marginBottom: 20 }}>
       <div className="card" style={{ paddingTop: 10 }}>
@@ -44,12 +57,14 @@ const Item = ({ item }) => {
             Price: ${item.price} || Quantity: {item.quantity}
           </h6>
           <p className="card-text"> {item.author}</p>
-          {/* <button
-            onClick={() => onAddToCart(item)}
+          <button
+            onClick={() => {
+              cartClick(item);
+            }}
             className="btn btn-primary btn-sm"
           >
             Add to cart
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

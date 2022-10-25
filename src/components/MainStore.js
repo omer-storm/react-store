@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Item from "./Item";
+import Cart from "./Cart";
 import Navbar from "./Navbar";
 import ListGroup from "./common/ListGroup";
 import Pagination from "./common/Pagination";
@@ -27,6 +28,7 @@ function MainStore() {
   );
   const { filteredItems } = useSelector((state) => state.items);
   const { items } = useSelector((state) => state.pagination);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
@@ -152,16 +154,10 @@ function MainStore() {
           </div>
         </div>
 
-        {/* <div className="col-4">
-          {cartItems.length !== 0 && (
-            <Cart
-              items={cartItems}
-              onRemoveFromCart={removeFromCart}
-              onCounterAction={counterAction}
-            />
-          )}
-          {cartItems.length !== 0 && <Purchase onFormPost={formPost} />}
-        </div> */}
+        <div className="col-4">
+          {cartItems.length !== 0 && <Cart />}
+          {/* {cartItems.length !== 0 && <Purchase onFormPost={formPost} />} */}
+        </div>
       </div>
     </div>
   );

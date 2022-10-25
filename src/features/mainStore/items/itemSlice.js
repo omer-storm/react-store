@@ -51,6 +51,9 @@ export const itemSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    quantityDecrement: (state, action) => {
+      state.filteredItems[action.payload].quantity--;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -83,5 +86,5 @@ export const itemSlice = createSlice({
   },
 });
 
-export const { reset, setFilteredItems } = itemSlice.actions;
+export const { reset, setFilteredItems, quantityDecrement } = itemSlice.actions;
 export default itemSlice.reducer;

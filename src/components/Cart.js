@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-function Cart({ items, onRemoveFromCart, onCounterAction }) {
+function Cart() {
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     // <pre>{JSON.stringify(items, null, 2)}</pre>
 
@@ -14,36 +17,36 @@ function Cart({ items, onRemoveFromCart, onCounterAction }) {
         </tr>
       </thead>
       <tbody>
-        {items.map((item, index) => (
+        {cartItems.map((item, index) => (
           <tr key={index}>
             <td>
               <img src={item.image} alt="Card cap" height={135} width={200} />
             </td>
             <td style={{ display: "flex", justifyContent: "center" }}>
-              <button
+              {/* <button
                 style={{ marginTop: 50 }}
                 onClick={() => onCounterAction(item, "dec")}
                 className="btn btn-success btn-sm"
               >
                 -
-              </button>
+              </button> */}
               <h6 style={{ margin: 7.5, marginTop: 50, fontSize: 20 }}>
                 {item.qty}
               </h6>
-              <button
+              {/* <button
                 style={{ marginTop: 50 }}
                 onClick={() => onCounterAction(item, "inc")}
                 className="btn btn-success btn-sm"
               >
                 +
-              </button>
+              </button> */}
             </td>
             <td>
               <h6 style={{ margin: 20, marginTop: 50 }}>
                 ${item.price * item.qty}
               </h6>
             </td>
-            <td>
+            {/* <td>
               <button
                 style={{ margin: 20, marginTop: 50 }}
                 onClick={() => onRemoveFromCart(item)}
@@ -51,7 +54,7 @@ function Cart({ items, onRemoveFromCart, onCounterAction }) {
               >
                 Remove
               </button>
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>
