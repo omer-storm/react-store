@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainStore from "./components/MainStore";
-import LikedItems from "./components/LikedItems";
+import MainStore from "./pages/MainStore";
+import LikedItems from "./pages/LikedItems";
 
 function App() {
   return (

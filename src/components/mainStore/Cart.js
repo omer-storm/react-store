@@ -4,12 +4,12 @@ import {
   quantityDecrement,
   quantityIncrement,
   addQuantityAmount,
-} from "../features/mainStore/items/itemSlice";
+} from "../../features/mainStore/items/itemSlice";
 import {
   incQty,
   decQty,
   removeFromCart,
-} from "../features/mainStore/cart/cartSlice";
+} from "../../features/mainStore/cart/cartSlice";
 
 function Cart() {
   const { cartItems } = useSelector((state) => state.cart);

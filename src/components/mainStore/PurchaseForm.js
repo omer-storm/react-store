@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { reset } from "../features/mainStore/cart/cartSlice";
+import { reset } from "../../features/mainStore/cart/cartSlice";
 
 const PurchaseForm = () => {
   const [info, setInfo] = useState({

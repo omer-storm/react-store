@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import {
   getCategories,
   setSelectedCategory,
-} from "../features/mainStore/categories/categorySlice";
-import { getFilteredItems } from "../features/mainStore/items/itemSlice";
+} from "../../features/mainStore/categories/categorySlice";
+import { getFilteredItems } from "../../features/mainStore/items/itemSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 

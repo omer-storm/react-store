@@ -1,8 +1,8 @@
-import Like from "./common/Like";
+import Like from "../common/Like";
 import React from "react";
-import { addToCart } from "../features/mainStore/cart/cartSlice";
+import { addToCart } from "../../features/mainStore/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { quantityDecrement } from "../features/mainStore/items/itemSlice";
+import { quantityDecrement } from "../../features/mainStore/items/itemSlice";
 
 const Item = ({ item }) => {
   const dispatch = useDispatch();
@@ -27,22 +27,6 @@ const Item = ({ item }) => {
         ></img>
         <div className="card-body">
           <Like status={item.like[0] ? true : false} id={item._id} />
-          {/* {lastSelectedItemAction.id === item.iid && (
-            <div
-            style={{paddingTop: 20} }
-              className={
-                lastSelectedItemAction.action === "addToCart"
-                  ? "alert alert-success"
-                  : "alert alert-danger"
-              }
-            >
-              <h6 style={{fontWeight: "normal"}}>
-                {lastSelectedItemAction.action === "addToCart"
-                  ? "Added To Cart"
-                  : "Removed From Cart"}
-              </h6>
-            </div>
-          )} */}
           <h5
             className="card-title"
             style={{

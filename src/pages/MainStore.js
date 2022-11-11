@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Item from "./Item";
-import Cart from "./Cart";
-import Navbar from "./Navbar";
-import ListGroup from "./CategoryListGroup";
-import Pagination from "./common/Pagination";
-import Purchase from "./Purchase";
+import Navbar from "../components/common/Navbar";
+import Pagination from "../components/common/Pagination";
+import Item from "../components/mainStore/Item";
+import Cart from "../components/mainStore/Cart";
+import ListGroup from "../components/mainStore/CategoryListGroup";
+import Purchase from "../components/mainStore/Purchase";
 import {
   setTotalpages,
   setItems,

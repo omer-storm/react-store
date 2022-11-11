@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Navbar from './Navbar'
+import Navbar from '../components/common/Navbar'
 // import Items from './items'
 
 class LikedItems extends Component {
