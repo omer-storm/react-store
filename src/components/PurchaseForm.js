@@ -1,16 +1,21 @@
 import { useState } from "react";
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../features/mainStore/cart/cartSlice";
 
-const PurchaseForm = ({ onFormPost }) => {
+const PurchaseForm = () => {
   const [info, setInfo] = useState({
     paymentMethod: "cashOnDelivery",
     creditCardInfo: {},
   });
 
+  const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormPost(info);
+    formPost(info);
     setInfo({
       paymentMethod: "cashOnDelivery",
       creditCardInfo: {},
@@ -26,6 +31,11 @@ const PurchaseForm = ({ onFormPost }) => {
   const handleCreditCardInfoChange = ({ currentTarget: input }) => {
     info.creditCardInfo[input.name] = input.value;
     setInfo({ ...info });
+  };
+
+  const formPost = async (form) => {
+    await axios.post("/api/orders", { form, cartItems });
+    dispatch(reset())
   };
 
   return (

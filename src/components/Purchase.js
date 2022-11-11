@@ -19,7 +19,7 @@ const Purchase = ({onFormPost}) => {
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PurchaseForm onFormPost={onFormPost} />
+          <PurchaseForm />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
