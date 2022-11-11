@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <React.Fragment>
       <div className="Navbar">
-        <h1 className="HeadingText" >Books And Music</h1>
+        <h1 className="HeadingText">Books And Music</h1>
         <ul>
           <li>
             <Link
@@ -18,9 +18,14 @@ const Navbar = () => {
               Store
             </Link>
           </li>
-          <li>
-            <Link className="NavText" to="/likes">
+          {/* <li>
+            <Link className="NavText" style={{ marginRight: 15 }} to="/likes">
               Likes
+            </Link>
+          </li> */}
+          <li>
+            <Link className="NavText" to="/login">
+              Login
             </Link>
           </li>
         </ul>
@@ -31,7 +36,7 @@ const Navbar = () => {
 };
 
 // const style = {
- 
+
 //   break: {
 //     display: "block",
 //     backgroundColor: "#f1f1f1",
