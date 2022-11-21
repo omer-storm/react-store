@@ -13,6 +13,7 @@ app.use('/api/items', require('./api/items'));
 app.use('/api/likes', require('./api/likes'));
 app.use('/api/categories', require('./api/categories'));
 app.use('/api/orders', require('./api/orders'));
+app.use('/api/users', require('./api/users'));
 
 
 app.listen(PORT, () => console.log(`listening on http://localhost:${PORT}`) );

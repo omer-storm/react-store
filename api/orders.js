@@ -44,7 +44,7 @@ router.get("/orderitems", async (req, res) => {
   //     },
   //   },
   // ]);
-  res.status(200).json({ items });
+  res.status(200).json( items );
 });
 
 router.get("/", async (req, res) => {
