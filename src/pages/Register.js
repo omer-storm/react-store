@@ -1,5 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { register, reset } from '../features/auth/authSlice'
 import Navbar from "../components/common/Navbar";
 
 function Login() {
@@ -10,6 +13,27 @@ function Login() {
     password2: "",
   });
 
+  const { name, email, password, password2 } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -17,7 +41,21 @@ function Login() {
     }));
   };
 
-  const { name, email, password, password2 } = formData;
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      console.log("Passwords do not match");
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
+    }
+  };
 
   return (
     <div className="container">
@@ -34,62 +72,64 @@ function Login() {
         }}
       >
         <h2>Register:</h2>
-        <div style={{ margin: "10px" }} className="form-group ">
-          <label htmlFor="name"> Name </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            className="form-control"
-            value={name}
-            placeholder="Enter Name"
-            onChange={onChange}
-          />
-        </div>
-        <div style={{ margin: "10px" }} className="form-group ">
-          <label htmlFor="email"> Email address </label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            className="form-control"
-            value={email}
-            placeholder="Enter Email"
-            onChange={onChange}
-          />
-        </div>
-        <div style={{ margin: "10px" }} className="form-group ">
-          <label htmlFor="password"> Password </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            className="form-control"
-            value={password}
-            placeholder="Enter Password"
-            onChange={onChange}
-          />
-        </div>
-        <div style={{ margin: "10px" }} className="form-group ">
-          <label htmlFor="confirmPassword"> Confirm Password </label>
-          <input
-            id="confirmPassword"
-            name="password2"
-            type="text"
-            className="form-control"
-            value={password2}
-            placeholder="Confirm Password"
-            onChange={onChange}
-          />
-        </div>
-        <div style={{ margin: "20px" }} className="form-group">
-          <button
-            style={{ position: "relative", left: "320px" }}
-            className="btn btn-light text-primary"
-          >
-            Register
-          </button>
-        </div>
+        <form onSubmit={onSubmit}>
+          <div style={{ margin: "10px" }} className="form-group ">
+            <label htmlFor="name"> Name </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              className="form-control"
+              value={name}
+              placeholder="Enter Name"
+              onChange={onChange}
+            />
+          </div>
+          <div style={{ margin: "10px" }} className="form-group ">
+            <label htmlFor="email"> Email address </label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              className="form-control"
+              value={email}
+              placeholder="Enter Email"
+              onChange={onChange}
+            />
+          </div>
+          <div style={{ margin: "10px" }} className="form-group ">
+            <label htmlFor="password"> Password </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              className="form-control"
+              value={password}
+              placeholder="Enter Password"
+              onChange={onChange}
+            />
+          </div>
+          <div style={{ margin: "10px" }} className="form-group ">
+            <label htmlFor="confirmPassword"> Confirm Password </label>
+            <input
+              id="confirmPassword"
+              name="password2"
+              type="password"
+              className="form-control"
+              value={password2}
+              placeholder="Confirm Password"
+              onChange={onChange}
+            />
+          </div>
+          <div style={{ margin: "20px" }} className="form-group">
+            <button
+              style={{ position: "relative", left: "320px" }}
+              className="btn btn-light text-primary"
+            >
+              Register
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
