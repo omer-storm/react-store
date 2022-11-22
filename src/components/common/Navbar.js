@@ -1,8 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from '../../features/auth/authSlice'
 import "../../App.css";
 
 const Navbar = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
   return (
     <React.Fragment>
       <div className="Navbar">
@@ -24,9 +36,26 @@ const Navbar = () => {
             </Link>
           </li> */}
           <li>
-            <Link className="NavText" to="/login">
-              Login
-            </Link>
+            {user === null ? (
+              <Link className="NavText" style={{ marginRight: 15 }} to="/login">
+                Login
+              </Link>
+            ) : (
+              <Link
+                className="NavText"
+                style={{ marginRight: 15 }}
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
+          </li>
+          <li>
+            {user !== null && (
+              <a className="NavText" href="#" onClick={onLogout}>
+                Logout
+              </a>
+            )}
           </li>
         </ul>
       </div>
