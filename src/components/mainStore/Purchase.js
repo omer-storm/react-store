@@ -2,7 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import PurchaseForm from "./PurchaseForm";
 
-const Purchase = ({onFormPost}) => {
+const Purchase = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

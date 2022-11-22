@@ -90,7 +90,7 @@ function Login() {
             <input
               id="email"
               name="email"
-              type="text"
+              type="email"
               className="form-control"
               value={email}
               placeholder="Enter Email"

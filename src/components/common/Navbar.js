@@ -30,11 +30,6 @@ const Navbar = () => {
               Store
             </Link>
           </li>
-          {/* <li>
-            <Link className="NavText" style={{ marginRight: 15 }} to="/likes">
-              Likes
-            </Link>
-          </li> */}
           <li>
             {user === null ? (
               <Link className="NavText" style={{ marginRight: 15 }} to="/login">
@@ -46,13 +41,13 @@ const Navbar = () => {
                 style={{ marginRight: 15 }}
                 to="/dashboard"
               >
-                Dashboard
+                {user.name}
               </Link>
             )}
           </li>
           <li>
             {user !== null && (
-              <a className="NavText" href="#" onClick={onLogout}>
+              <a className="NavText" href="/#" onClick={onLogout}>
                 Logout
               </a>
             )}
